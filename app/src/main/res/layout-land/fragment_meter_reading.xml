@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MeterReading">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/colleagues_list"
+        android:textSize="16sp"
+        android:layout_marginStart="10sp"
+        android:textStyle="bold"
+        android:layout_marginTop="5dp">
+    </TextView>
+    <Spinner
+        android:id="@+id/spinner"
+
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp">
+    </Spinner>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:text="@string/vehicle_meter_reading_type"
+        android:textSize="16sp"
+        android:layout_marginStart="10sp"
+        android:textStyle="bold">
+
+    </TextView>
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="110dp">
+    </Spinner>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="160dp"
+        android:text="@string/meter_reading"
+        android:textSize="16sp"
+        android:layout_marginStart="10sp"
+        android:textStyle="bold">
+    </TextView>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:padding="5dp"
+        android:layout_marginStart="10sp"
+        android:layout_marginTop="188dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/edit_text_background"
+        android:textSize="16sp"
+        android:textStyle="bold">
+
+    </EditText>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
+        android:text="@string/notes"
+        android:textSize="16sp"
+        android:layout_marginStart="10sp"
+        android:textStyle="bold">
+    </TextView>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:textSize="16sp"
+        android:padding="5dp"
+        android:background="@drawable/edit_text_background"
+        android:layout_marginStart="10sp"
+        android:textStyle="bold"
+        android:layout_marginTop="280dp"
+        android:autofillHints="">
+    </EditText>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="350dp"
+        android:text="@string/pic_upload"
+        android:textSize="16sp"
+        android:layout_marginStart="10sp"
+        android:textStyle="bold">
+    </TextView>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="380dp"
+        android:text="@string/choose_file"
+        android:layout_marginStart="10dp"
+        android:textColor="@color/black"
+        android:textSize="16sp">
+    </Button>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="175dp"
+        android:layout_marginTop="390dp"
+        android:text="@string/no_file_chosen"
+        android:textSize="15sp"
+        tools:ignore="SmallSp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="420dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="#2196F3"
+        android:textColor="@color/white"
+        android:text="@string/show_meter_reading_report">
+    </TextView>
+
+</FrameLayout>
