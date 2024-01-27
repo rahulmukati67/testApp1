@@ -53,21 +53,32 @@
 <!--                android:background="@drawable/picker_background"-->
 <!--                app:layout_constraintStart_toStartOf="parent"-->
 <!--                app:layout_constraintTop_toBottomOf="@+id/txtProjectList" />-->
-            <TextView
-                android:id="@+id/txtName"
-                android:textColor="@color/black"
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/const1"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:gravity="center_vertical"
-                android:layout_marginTop="5dp"
-                android:padding="5dp"
-                android:hint="Project List"
-                android:background="@drawable/simple_bg"
-                android:clickable="true"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="2dp"
+                android:background="@drawable/border_bg"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtProjectList"
-                android:focusable="true" />
+                app:layout_constraintTop_toBottomOf="@+id/txtProjectList">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/projestNameRv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="horizontal"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                </androidx.recyclerview.widget.RecyclerView>
+                
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
                 android:id="@+id/txtPlan"
@@ -81,7 +92,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/textView4"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/linerLayout1" />
+                app:layout_constraintTop_toBottomOf="@id/const1" />
 
             <TextView
                 android:id="@+id/textView4"

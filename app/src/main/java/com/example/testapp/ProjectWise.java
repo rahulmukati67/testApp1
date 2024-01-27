@@ -1,14 +1,13 @@
 package com.example.testapp;
 
-import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.SearchView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,13 +16,9 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
-
-import java.net.URISyntaxException;
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class ProjectWise extends Fragment {
 
@@ -32,6 +27,7 @@ public class ProjectWise extends Fragment {
     private ArrayAdapter<String> adapter;
     private TextView txtName;
     private AutoCompleteTextView autoCompleteTextView;
+    private RecyclerView projestNameRv;
     private androidx.appcompat.widget.SearchView search;
     private LinearLayout linerLayout1;
 
@@ -57,6 +53,7 @@ public class ProjectWise extends Fragment {
         spinnerPlan = view.findViewById(R.id.spinnerPlan);
 //      spinnerProjectList = view.findViewById(R.id.spinnerProjectList);
         spinnerMaterialName = view.findViewById(R.id.spinnerMaterialName);
+        projestNameRv = view.findViewById(R.id.projestNameRv);
 
         ArrayList<String> listDevelopment = new ArrayList<>();
          listDevelopment.add("DEV 1"); listDevelopment.add("DEV 2");listDevelopment.add("DEV 3");
@@ -89,53 +86,40 @@ public class ProjectWise extends Fragment {
 //        projectListAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 //        spinnerProjectList.setAdapter(projectListAdapter);
 
+
         ArrayAdapter<String> MaterialNameListAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, listMaterialNAme);
         MaterialNameListAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerMaterialName.setAdapter(MaterialNameListAdapter);
+
+
         ArrayList<String> list ;
         list = new ArrayList<>();
         list.add("aaa") ; list.add("b") ;list.add("bbb");list.add("cc");list.add("dd");list.add("eee");list.add("ffff");list.add("ghg");list.add("88");list.add("999");list.add("110");
 
-        ArrayAdapter<String> project = new ArrayAdapter<>(requireContext() , android.R.layout.simple_dropdown_item_1line , list);
-        autoCompleteTextView.setAdapter(project);
+        AdapterClass adapterClass = new AdapterClass(list , getContext());
+        LinearLayoutManager newLinerLayoutManager = new LinearLayoutManager(requireContext() , LinearLayoutManager.HORIZONTAL , false);
+        projestNameRv.setLayoutManager(newLinerLayoutManager);;
+        projestNameRv.setAdapter(adapterClass);
 
-        txtName.setOnClickListener(v -> {
-             if(linerLayout1.getVisibility() != View.VISIBLE) {
-                 linerLayout1.setVisibility(View.VISIBLE);
-                 autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                     @Override
-                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                         String name = autoCompleteTextView.getText().toString();
-                         txtName.setText(name);
-                         autoCompleteTextView.setText("");
-                         linerLayout1.setVisibility(View.GONE);
-                     }
-                 });
-             }else if(txtName.getText()!=null){
-                 linerLayout1.setVisibility(View.GONE);
-
-             }
-
-//                SearchLayoutFragment searchFragment = new SearchLayoutFragment();
-//                FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-//                transaction.replace(R.id.linerLayout1, searchFragment);
-//                transaction.commit();
-        });
+//        txtName.setOnClickListener(v -> {
+//             if(linerLayout1.getVisibility() != View.VISIBLE) {
+//                 linerLayout1.setVisibility(View.VISIBLE);
+//                 autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                     @Override
+//                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                         String name = autoCompleteTextView.getText().toString();
+//                         txtName.setText(name);
+//                         autoCompleteTextView.setText("");
+//                         linerLayout1.setVisibility(View.GONE);
+//                     }
+//                 });
+//             }else if(txtName.getText()!=null){
+//                 linerLayout1.setVisibility(View.GONE);
 //
-//        Bundle args = getArguments();
+//             }
 //
-//        if (args != null) {
-//            String name = args.getString("Name");
-//            if (name != null) {
-//                txtName.setText(name);
-//                SearchLayoutFragment searchFragment = new SearchLayoutFragment();
-//                FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-//                transaction.remove(searchFragment);
-//                transaction.commit();
-//            }
-//        }else{
-//            Log.d("Name test" , "Error");
-//        }
+//        });
+
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -161,7 +145,5 @@ public class ProjectWise extends Fragment {
                 }
             }
         });
-
     }
-
 }
