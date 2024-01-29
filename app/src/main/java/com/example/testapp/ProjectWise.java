@@ -1,6 +1,8 @@
 package com.example.testapp;
 
 import android.os.Bundle;
+
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -16,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 
@@ -30,6 +33,7 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
     private  ConstraintLayout const1;
     private AutoCompleteTextView autoCompleteTextView;
     private RecyclerView projestNameRv;
+    private ImageView drop_down;
     private LinearLayout linerLayout1;
 
      private Spinner spinnerMaterial  , spinnerDevelopment,spinnerPlan ,spinnerProjectList , spinnerMaterialName;
@@ -54,7 +58,7 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
         spinnerMaterialName = view.findViewById(R.id.spinnerMaterialName);
         projestNameRv = view.findViewById(R.id.projestNameRv);
         const1 = view.findViewById(R.id.const1);
-
+        drop_down = view.findViewById(R.id.drop_down);
         ArrayList<String> listDevelopment = new ArrayList<>();
          listDevelopment.add("DEV 1"); listDevelopment.add("DEV 2");listDevelopment.add("DEV 3");
 
@@ -95,7 +99,7 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
         list.add("aaaa") ; list.add("aa") ; list.add("a") ;  list.add("b") ;list.add("abc") ; list.add("def") ;list.add("bbb");list.add("cc");list.add("dd");list.add("eee");list.add("ffff");list.add("ghg");list.add("88");list.add("999");list.add("110");
 
         rlist = new ArrayList<>();
-//        rlist.add("Rahul");
+
         adapterClass = new AdapterClass(rlist , getContext(), ProjectWise.this , projestNameRv );
         projestNameRv.setAdapter(adapterClass);
 
@@ -142,7 +146,7 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
         LinearLayoutManager newLinerLayoutManager = new GridLayoutManager(requireContext(), 3);
         projestNameRv.setLayoutManager(newLinerLayoutManager);
 
-        const1.setOnClickListener(v -> {
+        drop_down.setOnClickListener(v -> {
             if(linerLayout1.getVisibility() != View.VISIBLE) {
                 linerLayout1.setVisibility(View.VISIBLE);
                 autoCompleteTextView.setEnabled(true);

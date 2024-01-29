@@ -20,13 +20,10 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyAdapter> {
     private RecyclerView projectNameRv;
     private OnItemClickListener onItemClickListener; // Click listener interface
 
-    // Interface for click listener
     public interface OnItemClickListener {
         void onItemClick(int position);
         void onItemClick();
     }
-
-    // Constructor to initialize the adapter with data and context
     public AdapterClass(ArrayList<String> list, Context mcontext, OnItemClickListener onItemClickListener , RecyclerView projectNameRv) {
         this.list = list;
         this.mcontext = mcontext;
@@ -74,11 +71,6 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyAdapter> {
                     onItemClickListener.onItemClick(getAdapterPosition());
                 }
             });
-//            itemView.setOnClickListener(v -> {
-//                if (onItemClickListener != null) {
-//                    onItemClickListener.onItemClick(getAdapterPosition());
-//                }
-//            });
         }
     }
 }
