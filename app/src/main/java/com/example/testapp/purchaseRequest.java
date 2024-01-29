@@ -16,6 +16,14 @@ public class purchaseRequest extends AppCompatActivity {
         setContentView(R.layout.activity_purchase_request);
         TabLayout tabLayout = findViewById(R.id.TabLayout1);
 
+       TabLayout.Tab first = tabLayout.getTabAt(0);
+        if(first != null){
+            first.select();
+        }
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, new ProjectWise());
+        transaction.commit();
+
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -38,7 +46,6 @@ public class purchaseRequest extends AppCompatActivity {
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-
             }
 
             @Override

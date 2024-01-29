@@ -5,6 +5,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,18 +18,18 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.TextView;
+
 import java.util.ArrayList;
 
-public class ProjectWise extends Fragment {
+public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickListener{
 
     private Button btnAdd , btnSub;
     private LinearLayout linearLayout ;
-    private ArrayAdapter<String> adapter;
-    private TextView txtName;
+    private  ArrayList<String> rlist  , list;
+    private  AdapterClass adapterClass;
+    private  ConstraintLayout const1;
     private AutoCompleteTextView autoCompleteTextView;
     private RecyclerView projestNameRv;
-    private androidx.appcompat.widget.SearchView search;
     private LinearLayout linerLayout1;
 
      private Spinner spinnerMaterial  , spinnerDevelopment,spinnerPlan ,spinnerProjectList , spinnerMaterialName;
@@ -42,9 +43,7 @@ public class ProjectWise extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         linerLayout1 = view.findViewById(R.id.linerLayout1);
-//        search = view.findViewById(R.id.search);
         btnAdd = view.findViewById(R.id.btnAdd);
-        txtName = view.findViewById(R.id.txtName);
         autoCompleteTextView = view.findViewById(R.id.autoCompleteTextView);
         btnSub= view.findViewById(R.id.btnSub);
         linearLayout = view.findViewById(R.id.linerLayout);
@@ -54,6 +53,7 @@ public class ProjectWise extends Fragment {
 //      spinnerProjectList = view.findViewById(R.id.spinnerProjectList);
         spinnerMaterialName = view.findViewById(R.id.spinnerMaterialName);
         projestNameRv = view.findViewById(R.id.projestNameRv);
+        const1 = view.findViewById(R.id.const1);
 
         ArrayList<String> listDevelopment = new ArrayList<>();
          listDevelopment.add("DEV 1"); listDevelopment.add("DEV 2");listDevelopment.add("DEV 3");
@@ -91,52 +91,39 @@ public class ProjectWise extends Fragment {
         MaterialNameListAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerMaterialName.setAdapter(MaterialNameListAdapter);
 
-
-        ArrayList<String> list ;
         list = new ArrayList<>();
-        list.add("aaa") ; list.add("b") ;list.add("bbb");list.add("cc");list.add("dd");list.add("eee");list.add("ffff");list.add("ghg");list.add("88");list.add("999");list.add("110");
+        list.add("aaaa") ; list.add("aa") ; list.add("a") ;  list.add("b") ;list.add("abc") ; list.add("def") ;list.add("bbb");list.add("cc");list.add("dd");list.add("eee");list.add("ffff");list.add("ghg");list.add("88");list.add("999");list.add("110");
 
-        AdapterClass adapterClass = new AdapterClass(list , getContext());
-        LinearLayoutManager newLinerLayoutManager = new LinearLayoutManager(requireContext() , LinearLayoutManager.HORIZONTAL , false);
-        projestNameRv.setLayoutManager(newLinerLayoutManager);;
+        rlist = new ArrayList<>();
+//        rlist.add("Rahul");
+        adapterClass = new AdapterClass(rlist , getContext(), ProjectWise.this , projestNameRv );
         projestNameRv.setAdapter(adapterClass);
 
-//        txtName.setOnClickListener(v -> {
-//             if(linerLayout1.getVisibility() != View.VISIBLE) {
-//                 linerLayout1.setVisibility(View.VISIBLE);
-//                 autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                     @Override
-//                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                         String name = autoCompleteTextView.getText().toString();
-//                         txtName.setText(name);
-//                         autoCompleteTextView.setText("");
-//                         linerLayout1.setVisibility(View.GONE);
-//                     }
-//                 });
-//             }else if(txtName.getText()!=null){
-//                 linerLayout1.setVisibility(View.GONE);
-//
-//             }
-//
-//        });
+      projectList();
+      addLayout();
+      subLayout();
 
+    }
 
+    private  void addLayout(){
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 addMaterialView();
             }
             private void addMaterialView() {
-               LayoutInflater layoutInflater = LayoutInflater.from(getContext());
-               View addMaterialView =  layoutInflater.inflate(R.layout.groupview,null);
-               linearLayout.addView(addMaterialView);
+                LayoutInflater layoutInflater = LayoutInflater.from(getContext());
+                View addMaterialView =  layoutInflater.inflate(R.layout.groupview,null);
+                linearLayout.addView(addMaterialView);
             }
         });
 
+    }
+    private  void subLayout(){
         btnSub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                   subMaterialView();
+                subMaterialView();
             }
             private void subMaterialView() {
                 int childCount  = linearLayout.getChildCount();
@@ -145,5 +132,62 @@ public class ProjectWise extends Fragment {
                 }
             }
         });
+
     }
+
+    private  void projectList(){
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(requireContext(),android.R.layout.simple_dropdown_item_1line,list);
+        autoCompleteTextView.setAdapter(adapter);
+        LinearLayoutManager newLinerLayoutManager = new GridLayoutManager(requireContext(), 3);
+        projestNameRv.setLayoutManager(newLinerLayoutManager);
+
+        const1.setOnClickListener(v -> {
+            if(linerLayout1.getVisibility() != View.VISIBLE) {
+                linerLayout1.setVisibility(View.VISIBLE);
+                autoCompleteTextView.setEnabled(true);
+                autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                        String name = autoCompleteTextView.getText().toString();
+                        rlist.add(name);
+                        adapterClass.notifyDataSetChanged();
+                        autoCompleteTextView.setText("");
+                        autoCompleteTextView.setEnabled(false);
+                        linerLayout1.setVisibility(View.GONE);
+                    }
+                });
+            }else{
+                linerLayout1.setVisibility(View.GONE);
+            }
+        });
+    }
+    @Override
+    public void onItemClick(int position) {
+         if(position>=0){
+             rlist.remove(position);
+             adapterClass.notifyDataSetChanged();
+         }
+    }
+    @Override
+        public void onItemClick() {
+            if(linerLayout1.getVisibility() != View.VISIBLE) {
+                linerLayout1.setVisibility(View.VISIBLE);
+                autoCompleteTextView.setEnabled(true);
+                autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        String name = autoCompleteTextView.getText().toString();
+                        rlist.add(name);
+                        adapterClass.notifyDataSetChanged();
+                        autoCompleteTextView.setText("");
+                        autoCompleteTextView.setEnabled(false);
+                        linerLayout1.setVisibility(View.GONE);
+                    }
+                });
+            }else{
+                linerLayout1.setVisibility(View.GONE);
+            }
+        }
 }
