@@ -17,11 +17,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TestApp"
         tools:targetApi="31">
-<!--        <activity-->
-<!--            android:name=".SearchLayout"-->
-<!--            android:exported="false" />-->
         <activity
-            android:name=".purchaseRequest"
+            android:name=".FirebaseDataBase"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,16 +26,30 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!-- <activity -->
+        <!-- android:name=".SearchLayout" -->
+        <!-- android:exported="false" /> -->
+        <activity
+            android:name=".purchaseRequest"
+            android:exported="true">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
         <activity
             android:name=".sample"
             android:exported="false" />
         <activity
             android:name=".PaymentRequest"
             android:exported="true">
+
         </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">
+
         </activity>
     </application>
 
