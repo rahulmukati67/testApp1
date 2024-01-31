@@ -59,7 +59,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:minHeight="30dp"
+                android:minHeight="28dp"
                 android:forceHasOverlappingRendering="false"
                 android:layout_marginBottom="2dp"
                 android:background="@drawable/picker_background"

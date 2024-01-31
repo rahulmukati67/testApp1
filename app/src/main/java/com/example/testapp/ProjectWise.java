@@ -1,5 +1,6 @@
 package com.example.testapp;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -25,7 +26,6 @@ import android.widget.Spinner;
 import java.util.ArrayList;
 
 public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickListener{
-
     private Button btnAdd , btnSub;
     private LinearLayout linearLayout ;
     private  ArrayList<String> rlist  , list;

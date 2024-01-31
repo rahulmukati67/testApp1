@@ -17,7 +17,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.findViewTreeViewModelStoreOwner
-
 class MeterReading : Fragment() {
     private  lateinit var spinner1: Spinner
     private  lateinit var spinner2 :Spinner

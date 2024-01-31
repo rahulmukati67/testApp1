@@ -1,24 +1,20 @@
 package com.example.testapp;
 
-import static androidx.core.content.ContentProviderCompat.requireContext;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyAdapter> {
-    private Context mcontext;
-    private ArrayList<String> list;
-    private RecyclerView projectNameRv;
-    private OnItemClickListener onItemClickListener; // Click listener interface
+    private final Context mcontext;
+    private final ArrayList<String> list;
+    private final RecyclerView projectNameRv;
+    private final OnItemClickListener onItemClickListener;
 
     public interface OnItemClickListener {
         void onItemClick(int position);
@@ -30,7 +26,6 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyAdapter> {
         this.onItemClickListener = onItemClickListener;
         this.projectNameRv = projectNameRv;
     }
-
     @NonNull
     @Override
     public MyAdapter onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -59,8 +54,8 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyAdapter> {
     }
 
     class MyAdapter extends RecyclerView.ViewHolder {
-        private TextView projectName;
-        private ImageView imgcancel;
+        private final TextView projectName;
+        private final ImageView imgcancel;
 
         public MyAdapter(@NonNull View itemView) {
             super(itemView);

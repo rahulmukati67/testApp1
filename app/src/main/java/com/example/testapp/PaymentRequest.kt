@@ -16,7 +16,6 @@ class PaymentRequest : AppCompatActivity() {
     private lateinit var spinner1 : Spinner
     private lateinit var spinner2 : Spinner
     private lateinit var submit : Button
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_payment_request)
