@@ -121,7 +121,7 @@ public class FirebaseDataBase extends AppCompatActivity {
                     Integer amountDueInteger = userSnapshot.child("AmountDue").getValue(Integer.class);
 
                     if (amountDueInteger != null) {
-                        int amountDue = amountDueInteger.intValue();
+                        int amountDue = amountDueInteger;
                         String userName = userSnapshot.child("UserName").getValue(String.class);
                         String priority = userSnapshot.child("Priority").getValue(String.class);
 
@@ -197,9 +197,8 @@ public class FirebaseDataBase extends AppCompatActivity {
                       public void onClick(View v) {
                           amount[0] = String.valueOf(amountEdit.getText());
                           amountDueTextView.setText(amount[0]);
-                          amountEdit.setText("00");
+                          amountEdit.setText("");
                           cardView.setVisibility(View.INVISIBLE);
-
                       }
                   });
 
