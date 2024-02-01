@@ -6,15 +6,16 @@ import com.google.firebase.database.IgnoreExtraProperties;
 public class User {
 
     public int amountDue;
-    public String userName ,priority;
+    public String userName ,priority ,userId;
 
     public User() {
     }
 
-    public User(int amountDue, String userName , String priority) {
+    public User(int amountDue, String userName , String priority , String userId) {
         this.amountDue = amountDue;
         this.userName = userName;
         this.priority = priority;
+        this.userId =userId;
     }
 
     public int getAmountDue() {
@@ -26,6 +27,9 @@ public class User {
 
     public String getUserName() {
         return userName;
+    }
+    public String getuserId() {
+        return userId;
     }
 }
 

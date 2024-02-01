@@ -1,12 +1,14 @@
 package com.example.testapp;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -117,15 +119,16 @@ public class FirebaseDataBase extends AppCompatActivity {
                 int paddingInPx = (int) (paddingInDp * scale + 0.5f);
 
                 for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
-
                     Integer amountDueInteger = userSnapshot.child("AmountDue").getValue(Integer.class);
+                    String userId = userSnapshot.getKey();
+
 
                     if (amountDueInteger != null) {
                         int amountDue = amountDueInteger;
                         String userName = userSnapshot.child("UserName").getValue(String.class);
                         String priority = userSnapshot.child("Priority").getValue(String.class);
 
-                        User user = new User(amountDue , userName , priority);
+                        User user = new User(amountDue , userName , priority,userId);
                         TableRow row = new TableRow(FirebaseDataBase.this);
 
                         TextView UserName = new TextView(FirebaseDataBase.this);
@@ -171,7 +174,7 @@ public class FirebaseDataBase extends AppCompatActivity {
 //                      row.setBackgroundResource(R.drawable.row_border);
                         table.addView(row);
 
-                        checkBoxClickListener(imageView , amountDueTextView);
+                        checkBoxClickListener(imageView , amountDueTextView , userId);
                     }
                 }
             }
@@ -181,11 +184,10 @@ public class FirebaseDataBase extends AppCompatActivity {
         });
     }
 
-    private void checkBoxClickListener(ImageView edit, TextView amountDueTextView){
+    private void checkBoxClickListener(ImageView edit, TextView amountDueTextView ,  String userId){
         EditText amountEdit = findViewById(R.id.amountEdit);
         Button btnUpdate = findViewById(R.id.btnUpdate);
         CardView cardView = findViewById(R.id.editCard);
-        final String[] amount = new String[1];
           edit.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View v) {
@@ -195,14 +197,29 @@ public class FirebaseDataBase extends AppCompatActivity {
                   btnUpdate.setOnClickListener(new View.OnClickListener() {
                       @Override
                       public void onClick(View v) {
-                          amount[0] = String.valueOf(amountEdit.getText());
-                          amountDueTextView.setText(amount[0]);
-                          amountEdit.setText("");
+                          int amount ;
+                          amount = Integer.parseInt(String.valueOf(amountEdit.getText()));
                           cardView.setVisibility(View.INVISIBLE);
+                          updateAmount(amount,amountDueTextView , amountEdit , userId);
+                          amountDueTextView.setText(String.valueOf(amount));
+                          amountEdit.setText("");
                       }
                   });
-
               }
           });
+    }
+
+    private void updateAmount(int newAmount , TextView amountDueTextView , EditText amountEdit , String userId){
+        DatabaseReference userReference = databaseReference.child(userId);
+        assert userReference != null;
+        userReference.child("AmountDue").setValue(newAmount, new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+                if (error == null) {
+                   amountDueTextView.setText(String.valueOf(newAmount));
+                   amountEdit.setText("");
+                }
+            }
+        });
     }
 }
