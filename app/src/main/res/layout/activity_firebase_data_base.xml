@@ -7,22 +7,19 @@
     android:background="#E8E6E6"
     tools:context=".FirebaseDataBase">
 
-
     <TextView
         android:id="@+id/txtAmountDue"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:text="Amount Due "
         android:textColor="#700606"
         android:textSize="16sp"
         android:gravity="center"
         android:textStyle="bold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-    </TextView>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView3"
@@ -33,6 +30,11 @@
         app:cardBackgroundColor="#E8E6E6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtAmountDue">
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="horizontal">
 
         <TableLayout
             android:id="@+id/table"
@@ -51,6 +53,8 @@
 
             </TableRow>
         </TableLayout>
+
+        </HorizontalScrollView>
 
     </androidx.cardview.widget.CardView>
 
@@ -92,14 +96,29 @@
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/button_background"
                 android:textColor="@color/black"
-                android:layout_marginBottom="3dp"
+                android:layout_marginBottom="8dp"
                 android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/amountEdit"/>
+
+            <Button
+                android:id="@+id/btnCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/button_background"
+                android:text="Cancel"
+                android:layout_marginBottom="8dp"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="@+id/btnUpdate"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/amountEdit">
-
             </Button>
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

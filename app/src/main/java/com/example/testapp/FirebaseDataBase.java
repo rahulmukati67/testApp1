@@ -8,8 +8,9 @@ import androidx.cardview.widget.CardView;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -32,6 +33,8 @@ public class FirebaseDataBase extends AppCompatActivity {
     private FirebaseDatabase dataBase;
     private DatabaseReference databaseReference;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,11 +44,12 @@ public class FirebaseDataBase extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference("User");
         getHeader();
         getTableContent();
+        btnCancelClickListener();
 
     }
 
     private void getHeader(){
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -64,6 +68,7 @@ public class FirebaseDataBase extends AppCompatActivity {
                 int paddingInPx = (int) (paddingInDp * scale + 0.5f);
 
                 TableRow row = new TableRow(FirebaseDataBase.this);
+
                 CheckBox checkBox = new CheckBox(FirebaseDataBase.this);
                 checkBox.setBackgroundResource(R.drawable.cell_border);
                 checkBox.setPadding(paddingInPx, paddingInPx, paddingInPx, paddingInPx);
@@ -71,7 +76,7 @@ public class FirebaseDataBase extends AppCompatActivity {
 
                 TextView UserName = new TextView(FirebaseDataBase.this);
                 UserName.setText(Header2);
-                UserName.setTextSize(18);
+                UserName.setTextSize(20);
                 UserName.setBackgroundResource(R.drawable.cell_border_header);
                 UserName.setTextColor(Color.WHITE);
                 UserName.setPadding(paddingInPx, paddingInPx, paddingInPx, paddingInPx);
@@ -80,7 +85,7 @@ public class FirebaseDataBase extends AppCompatActivity {
 
                 TextView amountDueTextView = new TextView(FirebaseDataBase.this);
                 amountDueTextView.setText(Header1);
-                amountDueTextView.setTextSize(18);
+                amountDueTextView.setTextSize(20);
                 amountDueTextView.setBackgroundResource(R.drawable.cell_border_header);
                 amountDueTextView.setTextColor(Color.WHITE);
                 amountDueTextView.setPadding(paddingInPx, paddingInPx, paddingInPx, paddingInPx);
@@ -89,7 +94,7 @@ public class FirebaseDataBase extends AppCompatActivity {
 
                 TextView PriorityTextView = new TextView(FirebaseDataBase.this);
                 PriorityTextView.setText(Header3);
-                PriorityTextView.setTextSize(18);
+                PriorityTextView.setTextSize(20);
                 PriorityTextView.setBackgroundResource(R.drawable.cell_border_header);
                 PriorityTextView.setTextColor(Color.WHITE);
                 PriorityTextView.setPadding(paddingInPx, paddingInPx, paddingInPx, paddingInPx);
@@ -108,11 +113,14 @@ public class FirebaseDataBase extends AppCompatActivity {
     }
 
     private void getTableContent(){
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                TableRow.LayoutParams layoutParamsRow = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
-                layoutParamsRow.setMargins(10, 10, 10, 10);
+                TableRow.LayoutParams layoutParamsRow = new TableRow.LayoutParams(
+                        TableRow.LayoutParams.WRAP_CONTENT,
+                        TableRow.LayoutParams.WRAP_CONTENT
+                );
+                layoutParamsRow.setMargins(2, 2, 2, 2);
 
                 int paddingInDp = 5;
                 float scale = getResources().getDisplayMetrics().density;
@@ -131,6 +139,7 @@ public class FirebaseDataBase extends AppCompatActivity {
                         User user = new User(amountDue , userName , priority,userId);
                         TableRow row = new TableRow(FirebaseDataBase.this);
 
+
                         TextView UserName = new TextView(FirebaseDataBase.this);
                         CheckBox checkBox = new CheckBox(FirebaseDataBase.this);
                         checkBox.setBackgroundResource(R.drawable.cell_border);
@@ -139,39 +148,50 @@ public class FirebaseDataBase extends AppCompatActivity {
                         UserName.setText(user.getUserName());
                         UserName.setPadding(paddingInPx, paddingInPx, paddingInPx, paddingInPx);
                         UserName.setBackgroundResource(R.drawable.cell_border);
-                        UserName.setTextSize(16);
+                        UserName.setTextSize(18);
                         row.addView(UserName);
-
 
                         LinearLayout linearLayout = new LinearLayout(FirebaseDataBase.this);
                         linearLayout.setOrientation(LinearLayout.HORIZONTAL);
 
+                        LinearLayout.LayoutParams layoutParams1 = new LinearLayout.LayoutParams(
+                                ViewGroup.LayoutParams.WRAP_CONTENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT,
+                                3
+                        );
                         TextView amountDueTextView = new TextView(FirebaseDataBase.this);
                         amountDueTextView.setText(String.valueOf(user.getAmountDue()));
-                        amountDueTextView.setTextSize(16);
+                        amountDueTextView.setTextSize(18);
+                        amountDueTextView.setLayoutParams(layoutParams1);
                         amountDueTextView.setPadding(paddingInPx, paddingInPx, paddingInPx, paddingInPx);
 
                         TextView priorityTxtView = new TextView(FirebaseDataBase.this);
                         priorityTxtView.setText(String.valueOf(user.getPriority()));
-                        priorityTxtView.setTextSize(16);
+                        priorityTxtView.setTextSize(18);
                         priorityTxtView.setTextColor(Color.BLACK);
                         priorityTxtView.setPadding(paddingInPx, paddingInPx, paddingInPx, paddingInPx);
                         priorityTxtView.setBackgroundResource(R.drawable.cell_border);
                         if(Objects.equals(priority, "high")){
-                            priorityTxtView.setTextColor(Color.RED);
+                           priorityTxtView.setTextColor(Color.RED);
                         }else{
                             priorityTxtView.setTextColor(Color.GREEN);
                         }
+                        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                                ViewGroup.LayoutParams.WRAP_CONTENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT,
+                                1
+                        );
+                        layoutParams.gravity = Gravity.END;
 
                         ImageView imageView = new ImageView(FirebaseDataBase.this);
                         imageView.setImageResource(R.drawable.baseline_edit_square_24);
-                        imageView.setForegroundGravity(View.FOCUS_LEFT);
+//                        imageView.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT, Gravity.END));
+                        imageView.setLayoutParams(layoutParams);
                         linearLayout.setBackgroundResource(R.drawable.cell_border);
                         linearLayout.addView(amountDueTextView);
                         linearLayout.addView(imageView);
                         row.addView(linearLayout);
                         row.addView(priorityTxtView);
-//                      row.setBackgroundResource(R.drawable.row_border);
                         table.addView(row);
 
                         checkBoxClickListener(imageView , amountDueTextView , userId);
@@ -191,33 +211,48 @@ public class FirebaseDataBase extends AppCompatActivity {
           edit.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View v) {
-                  if(cardView.getVisibility() != View.VISIBLE) {
+                  if(cardView.getVisibility() != View.VISIBLE ) {
                       cardView.setVisibility(View.VISIBLE);
                   }
-                  btnUpdate.setOnClickListener(new View.OnClickListener() {
-                      @Override
-                      public void onClick(View v) {
-                          int amount ;
-                          amount = Integer.parseInt(String.valueOf(amountEdit.getText()));
-                          cardView.setVisibility(View.INVISIBLE);
-                          updateAmount(amount,amountDueTextView , amountEdit , userId);
-                          amountDueTextView.setText(String.valueOf(amount));
-                          amountEdit.setText("");
-                      }
-                  });
+                      btnUpdate.setOnClickListener(new View.OnClickListener() {
+                          @Override
+                          public void onClick(View v) {
+                              long amount;
+                              if (!String.valueOf(amountEdit.getText()).equals("")) {
+                                  amount = Long.parseLong(String.valueOf(amountEdit.getText()));
+                                  cardView.setVisibility(View.INVISIBLE);
+                                  updateAmount(amount, amountDueTextView, amountEdit, userId);
+                                  amountDueTextView.setText(String.valueOf(amount));
+                                  amountEdit.setText("");
+                              }
+                          }
+                      });
               }
           });
     }
-
-    private void updateAmount(int newAmount , TextView amountDueTextView , EditText amountEdit , String userId){
+    private void updateAmount(long newAmount , TextView amountDueTextView , EditText amountEdit , String userId){
         DatabaseReference userReference = databaseReference.child(userId);
-        assert userReference != null;
         userReference.child("AmountDue").setValue(newAmount, new DatabaseReference.CompletionListener() {
             @Override
             public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
                 if (error == null) {
                    amountDueTextView.setText(String.valueOf(newAmount));
                    amountEdit.setText("");
+
+                }
+            }
+        });
+    }
+    private void btnCancelClickListener(){
+        EditText amountEdit = findViewById(R.id.amountEdit);
+        CardView cardView = findViewById(R.id.editCard);
+        Button btnCancel = findViewById(R.id.btnCancel);
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(cardView.getVisibility() == View.VISIBLE ) {
+                    cardView.setVisibility(View.INVISIBLE);
+                    amountEdit.setText("");
                 }
             }
         });
