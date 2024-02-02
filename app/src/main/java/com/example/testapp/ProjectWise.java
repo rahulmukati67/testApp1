@@ -117,11 +117,17 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
             }
             private void addMaterialView() {
                 LayoutInflater layoutInflater = LayoutInflater.from(getContext());
-                View addMaterialView =  layoutInflater.inflate(R.layout.groupview,null);
+                View addMaterialView = layoutInflater.inflate(R.layout.groupview, null);
+                Spinner spinnerMaterialName = addMaterialView.findViewById(R.id.spinnerMaterialName);
+                ArrayList<String> listMaterialNAme = new ArrayList<>();
+                listMaterialNAme.add("M 1"); listMaterialNAme.add("M 2");listMaterialNAme.add("M3");
+                ArrayAdapter<String> materialNameAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, listMaterialNAme);
+                materialNameAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinnerMaterialName.setAdapter(materialNameAdapter);
+
                 linearLayout.addView(addMaterialView);
             }
         });
-
     }
     private  void subLayout(){
         btnSub.setOnClickListener(new View.OnClickListener() {
@@ -146,6 +152,7 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
         LinearLayoutManager newLinerLayoutManager = new GridLayoutManager(requireContext(), 3);
         projestNameRv.setLayoutManager(newLinerLayoutManager);
 
+
         drop_down.setOnClickListener(v -> {
             if(linerLayout1.getVisibility() != View.VISIBLE) {
                 linerLayout1.setVisibility(View.VISIBLE);
@@ -153,7 +160,6 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
                 autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
                         String name = autoCompleteTextView.getText().toString();
                         rlist.add(name);
                         adapterClass.notifyDataSetChanged();

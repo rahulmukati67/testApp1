@@ -65,6 +65,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/spinnerMaterialName"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginEnd="15dp"
+        android:inputType="number"
+        android:maxLength="5"
         android:background="@drawable/edit_bg"
         app:layout_constraintHorizontal_bias="0.5"
         android:layout_marginTop="5dp"

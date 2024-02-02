@@ -139,11 +139,12 @@ public class FirebaseDataBase extends AppCompatActivity {
                         User user = new User(amountDue , userName , priority,userId);
                         TableRow row = new TableRow(FirebaseDataBase.this);
 
-
                         TextView UserName = new TextView(FirebaseDataBase.this);
                         CheckBox checkBox = new CheckBox(FirebaseDataBase.this);
+                        checkBox.setPadding(paddingInPx, paddingInPx, paddingInPx, paddingInPx);
                         checkBox.setBackgroundResource(R.drawable.cell_border);
                         row.addView(checkBox);
+
                         UserName.setTextColor(Color.BLACK);
                         UserName.setText(user.getUserName());
                         UserName.setPadding(paddingInPx, paddingInPx, paddingInPx, paddingInPx);

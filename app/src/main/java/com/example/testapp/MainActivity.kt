@@ -8,9 +8,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-         tabLayout  = findViewById(R.id.TabLayout)
-
+        tabLayout  = findViewById(R.id.TabLayout)
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 if (tab.text != null && tab.text.toString() == "Meter Reading") {
@@ -33,7 +31,6 @@ class MainActivity : AppCompatActivity() {
             override fun onTabReselected(tab: TabLayout.Tab?) {
 
             }
-
         })
         }
 }
