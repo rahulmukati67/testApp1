@@ -2,13 +2,16 @@ package com.example.testapp
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
+import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.Spinner
 import android.widget.TextView
@@ -21,38 +24,77 @@ class MeterReading : Fragment() {
     private lateinit var text:TextView
     private  lateinit var linerLayout1 : LinearLayout
     private lateinit var show_meter_reading : TextView
+    private lateinit var notes :EditText
     private  lateinit var btn:Button
-    private lateinit var txtMeterReading:TextView;
+    private lateinit var txtMeterReading: EditText
     private lateinit var autoCompleteTextView : AutoCompleteTextView
-    val galleryLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) {
+    private var linearLayoutListener: LinearLayoutListener? = null
+
+    private val galleryLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) {
         try{
         }catch(e:Exception){
             e.printStackTrace()
         }
     }
+    interface LinearLayoutListener {
+        fun hideLinearLayout()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_meter_reading, container, false)
+        val rootView = inflater.inflate(R.layout.fragment_meter_reading, container, false)
+        linerLayout1 = rootView.findViewById(R.id.linerLayout1);
+
+        rootView.setOnTouchListener { _, event ->
+
+            if (linerLayout1.visibility == View.VISIBLE) {
+                linerLayout1.visibility = View.GONE
+                return@setOnTouchListener true
+            }
+            false
+        }
+        return rootView
     }
+
+    fun setLinearLayoutListener(listener: LinearLayoutListener) {
+        this.linearLayoutListener = listener
+    }
+
+    fun notifyLinearLayoutHidden() {
+        linearLayoutListener?.hideLinearLayout()
+    }
+
+//    fun hideLinearLayout() {
+//        val linearLayout = view?.findViewById<LinearLayout>(R.id.linerLayout1)
+//        if (linearLayout != null) {
+//            if(linearLayout.visibility == View.VISIBLE) {
+//                linearLayout.visibility = View.GONE
+//                Log.d("MainActivity", "LinearLayout visibility set to GONE")
+//            }
+//        }
+//    }
+
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
          btn =  view.findViewById(R.id.button)
-         linerLayout1 = view.findViewById(R.id.linerLayout1);
+         notes = view.findViewById(R.id.notes)
          ColleagueName= view.findViewById(R.id.ColleagueName);
          txtMeterReading= view.findViewById(R.id.txtMeterReading);
          show_meter_reading = view.findViewById(R.id.show_meter_reading)
-        autoCompleteTextView = view.findViewById(R.id.autoCompleteTextView)
+         autoCompleteTextView = view.findViewById(R.id.autoCompleteTextView)
          btn.setOnClickListener {
              galleryLauncher.launch("image/*")
              text = view.findViewById(R.id.file)
              text.text = "File Selected"
+             if (linerLayout1.visibility == View.VISIBLE) {
+                 linerLayout1.visibility = View.GONE
+             }
          }
 //        val spinner1Items = listOf("Test User 1", "Test User 2")
         val spinner2Items = listOf("Type 1", "type 2" , "type 3")
-
         val userArr = ArrayList<String>();
 
        for(i in 1..100){
@@ -98,10 +140,38 @@ class MeterReading : Fragment() {
         spinner2Adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner2 = view.findViewById(R.id.spinner2)
         spinner2.adapter = spinner2Adapter
-        spinner2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+
+        spinner2.setOnTouchListener { _, event ->
+            if (event.action == MotionEvent.ACTION_DOWN) {
+                if (linerLayout1.visibility == View.VISIBLE) {
+                    linerLayout1.visibility = View.GONE
+                }
             }
-            override fun onNothingSelected(parent: AdapterView<*>?) {
+            false // Let the touch event propagate
+        }
+
+        txtMeterReading.setOnTouchListener { _, event ->
+            if (event.action == MotionEvent.ACTION_DOWN) {
+                if (linerLayout1.visibility == View.VISIBLE) {
+                    linerLayout1.visibility = View.GONE
+                }
+            }
+            false
+        }
+
+        notes.setOnTouchListener { _, event ->
+            if (event.action == MotionEvent.ACTION_DOWN) {
+
+                if (linerLayout1.visibility == View.VISIBLE) {
+                    linerLayout1.visibility = View.GONE
+                }
+            }
+            false
+        }
+
+        show_meter_reading.setOnClickListener {
+            if (linerLayout1.visibility == View.VISIBLE) {
+                linerLayout1.visibility = View.GONE
             }
         }
     }

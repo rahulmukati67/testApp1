@@ -33,8 +33,6 @@ public class FirebaseDataBase extends AppCompatActivity {
     private FirebaseDatabase dataBase;
     private DatabaseReference databaseReference;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,9 +43,7 @@ public class FirebaseDataBase extends AppCompatActivity {
         getHeader();
         getTableContent();
         btnCancelClickListener();
-
     }
-
     private void getHeader(){
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -100,10 +96,8 @@ public class FirebaseDataBase extends AppCompatActivity {
                 PriorityTextView.setPadding(paddingInPx, paddingInPx, paddingInPx, paddingInPx);
                 PriorityTextView.setTypeface(null, Typeface.BOLD);
                 row.addView(PriorityTextView);
-
 //                row.setBackgroundResource(R.drawable.row_border);
                 table.addView(row);
-
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -111,7 +105,6 @@ public class FirebaseDataBase extends AppCompatActivity {
             }
         });
     }
-
     private void getTableContent(){
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -122,6 +115,10 @@ public class FirebaseDataBase extends AppCompatActivity {
                 );
                 layoutParamsRow.setMargins(2, 2, 2, 2);
 
+                LinearLayout.LayoutParams column = new LinearLayout.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.MATCH_PARENT);
+
                 int paddingInDp = 5;
                 float scale = getResources().getDisplayMetrics().density;
                 int paddingInPx = (int) (paddingInDp * scale + 0.5f);
@@ -129,7 +126,6 @@ public class FirebaseDataBase extends AppCompatActivity {
                 for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
                     Integer amountDueInteger = userSnapshot.child("AmountDue").getValue(Integer.class);
                     String userId = userSnapshot.getKey();
-
 
                     if (amountDueInteger != null) {
                         int amountDue = amountDueInteger;
@@ -150,6 +146,7 @@ public class FirebaseDataBase extends AppCompatActivity {
                         UserName.setPadding(paddingInPx, paddingInPx, paddingInPx, paddingInPx);
                         UserName.setBackgroundResource(R.drawable.cell_border);
                         UserName.setTextSize(18);
+//                        UserName.setLayoutParams(column);
                         row.addView(UserName);
 
                         LinearLayout linearLayout = new LinearLayout(FirebaseDataBase.this);
@@ -204,7 +201,6 @@ public class FirebaseDataBase extends AppCompatActivity {
             }
         });
     }
-
     private void checkBoxClickListener(ImageView edit, TextView amountDueTextView ,  String userId){
         EditText amountEdit = findViewById(R.id.amountEdit);
         Button btnUpdate = findViewById(R.id.btnUpdate);

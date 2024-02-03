@@ -9,6 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/mainPurchaseRequest"
         android:background="#F3F1F1"
         tools:context=".purchaseRequest">
 
@@ -147,19 +148,19 @@
                     android:id="@+id/txtProjectWise"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="PROJECT WISE" />
+                    android:text="@string/project_wise" />
 
                 <com.google.android.material.tabs.TabItem
                     android:id="@+id/txtMaterailWise"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Material Wise" />
+                    android:text="@string/material_wise" />
 
                 <com.google.android.material.tabs.TabItem
                     android:id="@+id/txtReport"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Report" />
+                    android:text="@string/report" />
             </com.google.android.material.tabs.TabLayout>
 
             <FrameLayout
@@ -168,7 +169,6 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="50dp" />
         </androidx.cardview.widget.CardView>
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

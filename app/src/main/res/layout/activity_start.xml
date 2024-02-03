@@ -27,6 +27,18 @@
             android:layout_margin="20dp"
             android:padding="10dp"
             android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/btnPurchaseRequest"
+            android:text="Purrchas REquest Layout"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:background="@drawable/btn_bg"
+            android:textColor="@color/white"
+            android:padding="10dp"
+            android:layout_width="wrap_content"
+            android:layout_margin="20dp"
+            android:layout_height="wrap_content">
+        </Button>
 
         <Button
             android:id="@+id/btnPaymentRequest"
@@ -40,18 +52,8 @@
             android:padding="10dp"
             android:layout_height="wrap_content">
         </Button>
-        <Button
-            android:id="@+id/btnPurchaseRequest"
-            android:text="Purrchas REquest Layout"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:background="@drawable/btn_bg"
-            android:textColor="@color/white"
-            android:padding="10dp"
-            android:layout_width="wrap_content"
-            android:layout_margin="20dp"
-            android:layout_height="wrap_content">
-        </Button>
+
+
         <Button
             android:id="@+id/btnTable"
             android:text="Table Layout"
