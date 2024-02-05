@@ -1,18 +1,304 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="400dp"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".BottomSheetFragment">
 
-    <TextView
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/BottomSheetLayout"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_marginTop="20dp"
-        android:textColor="@color/black"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_gravity="center"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent"
+        android:background="@drawable/bottomsheetroundedcorner"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-</FrameLayout>
+        <FrameLayout
+            android:id="@+id/sheet"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bottomsheetroundedcorner">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp">
+
+                <ImageView
+                    android:id="@+id/dash"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_horizontal_rule_24"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+                    >
+
+                </ImageView>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/const1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/dash">
+
+                    <ImageView
+                        android:id="@+id/btnShare"
+                        android:layout_width="36dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp"
+                        android:src="@drawable/baseline_ios_share_24"
+                        app:layout_constraintBottom_toTopOf="@+id/txtShareTO"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    </ImageView>
+
+                    <TextView
+                        android:id="@+id/txtShareTO"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Share To"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/btnShare"
+                        app:layout_constraintStart_toStartOf="@+id/btnShare"
+                        app:layout_constraintTop_toBottomOf="@+id/btnShare">
+
+                    </TextView>
+
+                    <ImageView
+                        android:id="@+id/btnWhatsappShare"
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="5dp"
+                        android:src="@drawable/whatsapp"
+                        app:layout_constraintBottom_toTopOf="@+id/txtWhatsapp"
+                        app:layout_constraintStart_toEndOf="@+id/btnShare"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    </ImageView>
+
+                    <TextView
+                        android:id="@+id/txtWhatsapp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Whatsapp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/btnWhatsappShare"
+                        app:layout_constraintStart_toStartOf="@+id/btnWhatsappShare"
+                        app:layout_constraintTop_toBottomOf="@+id/btnWhatsappShare">
+
+                    </TextView>
+
+                    <ImageView
+                        android:id="@+id/btnInstagramShare"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="5dp"
+                        android:src="@drawable/instagram"
+                        app:layout_constraintBottom_toTopOf="@+id/txtInstagram"
+                        app:layout_constraintStart_toEndOf="@+id/btnWhatsappShare"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    </ImageView>
+
+                    <TextView
+                        android:id="@+id/txtInstagram"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Instagram"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/btnInstagramShare"
+                        app:layout_constraintStart_toStartOf="@+id/btnInstagramShare"
+                        app:layout_constraintTop_toBottomOf="@+id/btnInstagramShare">
+
+                    </TextView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:paddingBottom="30dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/const1">
+
+
+                    <ImageView
+                        android:id="@+id/btnsave"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20sp"
+                        android:layout_marginTop="20dp"
+                        android:src="@drawable/baseline_bookmark_border_24"
+                        app:layout_constraintEnd_toStartOf="@+id/txtSave"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:layout_editor_absoluteY="16dp" />
+
+                    <TextView
+                        android:id="@+id/txtSave"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30sp"
+                        android:text="Save"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/btnsave"
+                        app:layout_constraintStart_toEndOf="@+id/btnsave"
+                        app:layout_constraintTop_toTopOf="@+id/btnsave" />
+
+                    <ImageView
+                        android:id="@+id/btnDownload"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20sp"
+                        android:layout_marginTop="20dp"
+                        android:src="@drawable/baseline_downloading_24"
+                        app:layout_constraintEnd_toStartOf="@+id/txtDownload"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/btnsave" />
+
+                    <TextView
+                        android:id="@+id/txtDownload"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:text="Download"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/btnDownload"
+                        app:layout_constraintStart_toEndOf="@+id/btnDownload"
+                        app:layout_constraintTop_toTopOf="@+id/btnDownload" />
+
+
+                    <ImageView
+                        android:id="@+id/btnCopyLink"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20sp"
+                        android:layout_marginTop="20dp"
+                        android:src="@drawable/baseline_insert_link_24"
+                        app:layout_constraintEnd_toStartOf="@+id/txtcopyLink"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/btnDownload" />
+
+                    <TextView
+                        android:id="@+id/txtcopyLink"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30sp"
+                        android:text="Copy Link"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/btnCopyLink"
+                        app:layout_constraintStart_toEndOf="@+id/btnCopyLink"
+                        app:layout_constraintTop_toTopOf="@+id/btnCopyLink" />
+
+
+                    <ImageView
+                        android:id="@+id/btnBlockUser"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20sp"
+                        android:layout_marginTop="20dp"
+                        android:src="@drawable/baseline_block_24"
+                        app:layout_constraintEnd_toStartOf="@+id/txtBlockUser"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/btnCopyLink" />
+
+                    <TextView
+                        android:id="@+id/txtBlockUser"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30sp"
+                        android:text="BlockUser"
+                        android:textColor="#D00303"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/btnBlockUser"
+                        app:layout_constraintStart_toEndOf="@+id/btnBlockUser"
+                        app:layout_constraintTop_toTopOf="@+id/btnBlockUser" />
+
+                    <ImageView
+                        android:id="@+id/btnReport"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20sp"
+                        android:layout_marginTop="20dp"
+                        android:src="@drawable/baseline_outlined_flag_24"
+                        app:layout_constraintEnd_toStartOf="@+id/txtReport"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/btnBlockUser" />
+
+                    <TextView
+                        android:id="@+id/txtReport"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30sp"
+                        android:text="Report"
+                        android:textColor="#D00303"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/btnReport"
+                        app:layout_constraintStart_toEndOf="@+id/btnReport"
+                        app:layout_constraintTop_toTopOf="@+id/btnReport" />
+
+                    <EditText
+                        android:id="@+id/ediTextBottomSheet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:background="@drawable/edit_bg"
+                        android:gravity="center"
+                        android:hint="Enter Some Text"
+                        android:maxLength="10"
+                        android:minWidth="200dp"
+                        android:minHeight="40dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtReport">
+
+                    </EditText>
+
+                    <Button
+                        android:id="@+id/btnUpdate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Update"
+                        android:background="@drawable/btn_bg"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/ediTextBottomSheet">
+
+                    </Button>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </FrameLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

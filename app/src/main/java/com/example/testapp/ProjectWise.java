@@ -1,6 +1,5 @@
 package com.example.testapp;
 
-
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -280,7 +279,6 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
             }
         });
     }
-
     private  void projectList(){
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(requireContext(),android.R.layout.simple_dropdown_item_1line,list);
@@ -352,7 +350,6 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
             }
         });
     }
-
     @Override
     public void onItemClick(int position) {
          if(position>=0){
