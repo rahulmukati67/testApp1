@@ -4,7 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#8E8C8C"
+    android:background="#AAAAAA"
     android:id="@+id/BottomSheetActivity"
     tools:context=".BottomSheetActivity">
 
@@ -19,8 +19,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/btnBottomSheetFragment"
         app:layout_constraintEnd_toStartOf="@+id/btnBottomSheetFragment"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btnBottomSheetFragment">
-    </Button>
+        app:layout_constraintTop_toTopOf="@+id/btnBottomSheetFragment"/>
+
     <Button
         android:id="@+id/btnBottomSheetFragment"
         android:layout_width="wrap_content"
@@ -32,15 +32,15 @@
         android:text="bottom Sheet Fragment"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </Button>
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/txtBottomSheet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
+        android:minHeight="40dp"
+        android:minWidth="100dp"
         android:textSize="20sp"
         android:padding="5dp"
         android:background="@drawable/edit_bg"
@@ -76,9 +76,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:layout_height="2dp">
-
-                </View>
+                    android:layout_height="2dp"/>
 
                 <ImageView
                     android:id="@+id/dash"
@@ -87,10 +85,7 @@
                     android:src="@drawable/baseline_horizontal_rule_24"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/vieww">
-                    >
-
-                </ImageView>
+                    app:layout_constraintTop_toBottomOf="@+id/vieww"/>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/const1"
@@ -111,9 +106,7 @@
                         android:src="@drawable/baseline_ios_share_24"
                         app:layout_constraintBottom_toTopOf="@+id/txtShareTO"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                    </ImageView>
+                        app:layout_constraintTop_toTopOf="parent"/>
 
                     <TextView
                         android:id="@+id/txtShareTO"
@@ -126,9 +119,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="@+id/btnShare"
                         app:layout_constraintStart_toStartOf="@+id/btnShare"
-                        app:layout_constraintTop_toBottomOf="@+id/btnShare">
-
-                    </TextView>
+                        app:layout_constraintTop_toBottomOf="@+id/btnShare"/>
 
                     <ImageView
                         android:id="@+id/btnWhatsappShare"
@@ -139,10 +130,7 @@
                         android:src="@drawable/whatsapp"
                         app:layout_constraintBottom_toTopOf="@+id/txtWhatsapp"
                         app:layout_constraintStart_toEndOf="@+id/btnShare"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                    </ImageView>
-
+                        app:layout_constraintTop_toTopOf="parent"/>
                     <TextView
                         android:id="@+id/txtWhatsapp"
                         android:layout_width="wrap_content"
@@ -153,9 +141,8 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="@+id/btnWhatsappShare"
                         app:layout_constraintStart_toStartOf="@+id/btnWhatsappShare"
-                        app:layout_constraintTop_toBottomOf="@+id/btnWhatsappShare">
+                        app:layout_constraintTop_toBottomOf="@+id/btnWhatsappShare"/>
 
-                    </TextView>
 
                     <ImageView
                         android:id="@+id/btnInstagramShare"
@@ -166,9 +153,7 @@
                         android:src="@drawable/instagram"
                         app:layout_constraintBottom_toTopOf="@+id/txtInstagram"
                         app:layout_constraintStart_toEndOf="@+id/btnWhatsappShare"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                    </ImageView>
+                        app:layout_constraintTop_toTopOf="parent"/>
 
                     <TextView
                         android:id="@+id/txtInstagram"
@@ -181,11 +166,8 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="@+id/btnInstagramShare"
                         app:layout_constraintStart_toStartOf="@+id/btnInstagramShare"
-                        app:layout_constraintTop_toBottomOf="@+id/btnInstagramShare">
-
-                    </TextView>
+                        app:layout_constraintTop_toBottomOf="@+id/btnInstagramShare"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -243,7 +225,6 @@
                         app:layout_constraintStart_toEndOf="@+id/btnDownload"
                         app:layout_constraintTop_toTopOf="@+id/btnDownload" />
 
-
                     <ImageView
                         android:id="@+id/btnCopyLink"
                         android:layout_width="wrap_content"
@@ -266,7 +247,6 @@
                         app:layout_constraintBottom_toBottomOf="@+id/btnCopyLink"
                         app:layout_constraintStart_toEndOf="@+id/btnCopyLink"
                         app:layout_constraintTop_toTopOf="@+id/btnCopyLink" />
-
 
                     <ImageView
                         android:id="@+id/btnBlockUser"

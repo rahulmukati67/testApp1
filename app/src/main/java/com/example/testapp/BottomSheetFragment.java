@@ -1,4 +1,5 @@
 package com.example.testapp;
+
 import android.app.Dialog;
 import android.content.Context;
 import android.content.res.Resources;
@@ -11,11 +12,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
-
 import com.example.testapp.databinding.FragmentBottomSheetBinding;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -26,11 +25,10 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
     BottomSheetBehavior<View> bottomSheetBehaviour;
     Button btnUpdate;
     private FragmentBottomSheetBinding binding;
-
     EditText ediTextBottomSheet;
     private OnTextChangeListener textChangeListener;
-    ImageView btnsave , btnDownload,btnCopyLink,btnBlockUser,btnReport;
-    TextView txtReport ,txtBlockUser ,txtCopyLink,txtSave,txtDownload;
+//    ImageView btnsave , btnDownload,btnCopyLink,btnBlockUser,btnReport;
+//    TextView txtReport ,txtBlockUser ,txtCopyLink,txtSave,txtDownload;
 
     @NonNull
     @Override
@@ -38,22 +36,19 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
         dialog = (BottomSheetDialog) super.onCreateDialog(savedInstanceState);
         return dialog;
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentBottomSheetBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ediTextBottomSheet = dialog.findViewById(R.id.ediTextBottomSheet);
 
-
         bottomSheetBehaviour = BottomSheetBehavior.from((View) view.getParent());
-        bottomSheetBehaviour.setState(BottomSheetBehavior.STATE_HALF_EXPANDED);
+        bottomSheetBehaviour.setState(BottomSheetBehavior.STATE_EXPANDED);
         CoordinatorLayout layout = dialog.findViewById(R.id.BottomSheetLayout);
         assert layout != null;
         layout.setMinimumHeight(Resources.getSystem().getDisplayMetrics().heightPixels);
@@ -65,8 +60,7 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
                 if (textChangeListener != null) {
                     textChangeListener.onTextChange(newText);
                 }
-                if (bottomSheetBehaviour.getState() == BottomSheetBehavior.STATE_HALF_EXPANDED
-                        || bottomSheetBehaviour.getState() == BottomSheetBehavior.STATE_EXPANDED) {
+                if(bottomSheetBehaviour.getState() != BottomSheetBehavior.STATE_HIDDEN){
                     bottomSheetBehaviour.setState(BottomSheetBehavior.STATE_HIDDEN);
                 }
             }
@@ -88,7 +82,6 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
                 }
             }
         };
-
         binding.btnDownload.setOnClickListener(commonClickListener);
         binding.txtDownload.setOnClickListener(commonClickListener);
         binding.btnsave.setOnClickListener(commonClickListener);
@@ -99,8 +92,6 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
         binding.txtcopyLink.setOnClickListener(commonClickListener);
         binding.btnBlockUser.setOnClickListener(commonClickListener);
         binding.txtBlockUser.setOnClickListener(commonClickListener);
-
-
     }
 
     @Override

@@ -21,8 +21,7 @@
         <FrameLayout
             android:id="@+id/sheet"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/bottomsheetroundedcorner">
+            android:layout_height="match_parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -36,10 +35,7 @@
                     android:src="@drawable/baseline_horizontal_rule_24"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-                    >
-
-                </ImageView>
+                    app:layout_constraintTop_toTopOf="parent"/>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/const1"
@@ -60,9 +56,7 @@
                         android:src="@drawable/baseline_ios_share_24"
                         app:layout_constraintBottom_toTopOf="@+id/txtShareTO"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                    </ImageView>
+                        app:layout_constraintTop_toTopOf="parent"/>
 
                     <TextView
                         android:id="@+id/txtShareTO"
@@ -75,9 +69,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="@+id/btnShare"
                         app:layout_constraintStart_toStartOf="@+id/btnShare"
-                        app:layout_constraintTop_toBottomOf="@+id/btnShare">
-
-                    </TextView>
+                        app:layout_constraintTop_toBottomOf="@+id/btnShare"/>
 
                     <ImageView
                         android:id="@+id/btnWhatsappShare"
@@ -88,9 +80,7 @@
                         android:src="@drawable/whatsapp"
                         app:layout_constraintBottom_toTopOf="@+id/txtWhatsapp"
                         app:layout_constraintStart_toEndOf="@+id/btnShare"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                    </ImageView>
+                        app:layout_constraintTop_toTopOf="parent"/>
 
                     <TextView
                         android:id="@+id/txtWhatsapp"
@@ -102,9 +92,8 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="@+id/btnWhatsappShare"
                         app:layout_constraintStart_toStartOf="@+id/btnWhatsappShare"
-                        app:layout_constraintTop_toBottomOf="@+id/btnWhatsappShare">
+                        app:layout_constraintTop_toBottomOf="@+id/btnWhatsappShare"/>
 
-                    </TextView>
 
                     <ImageView
                         android:id="@+id/btnInstagramShare"
@@ -115,9 +104,7 @@
                         android:src="@drawable/instagram"
                         app:layout_constraintBottom_toTopOf="@+id/txtInstagram"
                         app:layout_constraintStart_toEndOf="@+id/btnWhatsappShare"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                    </ImageView>
+                        app:layout_constraintTop_toTopOf="parent"/>
 
                     <TextView
                         android:id="@+id/txtInstagram"
@@ -130,12 +117,9 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="@+id/btnInstagramShare"
                         app:layout_constraintStart_toStartOf="@+id/btnInstagramShare"
-                        app:layout_constraintTop_toBottomOf="@+id/btnInstagramShare">
+                        app:layout_constraintTop_toBottomOf="@+id/btnInstagramShare"/>
 
-                    </TextView>
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
-
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -291,14 +275,10 @@
                         android:textColor="@color/white"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/ediTextBottomSheet">
-
-                    </Button>
+                        app:layout_constraintTop_toBottomOf="@+id/ediTextBottomSheet"/>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
             </androidx.constraintlayout.widget.ConstraintLayout>
         </FrameLayout>
-
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,8 +1,6 @@
 package com.example.testapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -11,18 +9,16 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.testapp.databinding.ActivityBottomSheetBinding;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
-
 
 
 public class BottomSheetActivity extends AppCompatActivity implements BottomSheetFragment.OnTextChangeListener {
         private Button btnBottomSheet , btnBottomSheetFragment;
         private TextView txtBottomSheet;
         private ActivityBottomSheetBinding  binding;
-      ImageView btnsave , btnDownload,btnCopyLink,btnBlockUser,btnReport;
-      TextView txtReport ,txtBlockUser ,txtCopyLink,txtSave,txtDownload;
+//      ImageView btnsave , btnDownload,btnCopyLink,btnBlockUser,btnReport;
+//      TextView txtReport ,txtBlockUser ,txtCopyLink,txtSave,txtDownload;
     private BottomSheetBehavior<FrameLayout> bottomSheetBehavior;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class startActivity extends AppCompatActivity {
-    private Button btnAttendance , btnPurchaseRequest , btnPaymentRequest , btnTable , btnBottomSheet;
+    private Button btnAttendance , btnPurchaseRequest , btnPaymentRequest , btnTable , btnBottomSheet ,btnWebView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +19,7 @@ public class startActivity extends AppCompatActivity {
         btnPurchaseRequest = findViewById(R.id.btnPurchaseRequest);
         btnTable = findViewById(R.id.btnTable);
         btnBottomSheet = findViewById(R.id.btnBottomSheet);
+        btnWebView = findViewById(R.id.btnWebView);
 
         btnAttendance.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,6 +54,14 @@ public class startActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(startActivity.this , BottomSheetActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnWebView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(startActivity.this  , WebView.class);
                 startActivity(intent);
             }
         });
