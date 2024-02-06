@@ -42,18 +42,16 @@ public class WebView extends AppCompatActivity {
                     default:
                         fragment = new Tab2();
                 }
-
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.fragment_container, fragment);
                 transaction.commit();
             }
-
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
             }
-
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
+
             }
         });
     }

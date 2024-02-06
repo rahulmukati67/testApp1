@@ -1,5 +1,6 @@
 package com.example.testapp;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -35,6 +36,7 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
     private RecyclerView projestNameRv;
     private ImageView drop_down;
     private LinearLayout linerLayout1;
+    TextView projectListHint;
 
      private Spinner spinnerMaterial  , spinnerDevelopment,spinnerPlan ,spinnerProjectList , spinnerMaterialName;
     private LinearLayoutListener linearLayoutListener;
@@ -46,18 +48,17 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
     public void setLinearLayoutListener(LinearLayoutListener listener) {
         this.linearLayoutListener = listener;
     }
-
     public void notifyLinearLayoutHidden() {
         if (linearLayoutListener != null) {
             linearLayoutListener.hideLinearLayout();
         }
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_project_wise, container, false);
         linerLayout1 = rootView.findViewById(R.id.linerLayout1);
+        projectListHint = rootView.findViewById(R.id.projectListHint);
         rootView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -90,23 +91,142 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
         const1 = view.findViewById(R.id.const1);
         drop_down = view.findViewById(R.id.drop_down);
         ArrayList<String> listDevelopment = new ArrayList<>();
-         listDevelopment.add("DEV 1"); listDevelopment.add("DEV 2");listDevelopment.add("DEV 3");
+        listDevelopment.add("Please Select");listDevelopment.add("DEV 1"); listDevelopment.add("DEV 2");listDevelopment.add("DEV 3");
 
         ArrayList<String> listMaterialNAme = new ArrayList<>();
-        listMaterialNAme.add("M 1"); listMaterialNAme.add("M 2");listMaterialNAme.add("M3");
+        listMaterialNAme.add("Please Select");listMaterialNAme.add("M 1"); listMaterialNAme.add("M 2");listMaterialNAme.add("M3");
 
         ArrayList<String> listMaterial = new ArrayList<>();
-        listMaterial.add("Material 1"); listMaterial.add("Material 1") ;listMaterial.add("Material 1");
+        listMaterial.add("Please Select"); listMaterial.add("Material 1"); listMaterial.add("Material 2") ;listMaterial.add("Material 3");
 
         ArrayList<String> listPlan = new ArrayList<>();
-        listPlan.add("Plan 1"); listPlan.add("Plan 2"); listPlan.add("Plan 3");
+        listPlan.add("Please Select");listPlan.add("Plan 1"); listPlan.add("Plan 2"); listPlan.add("Plan 3");
 
-        ArrayList<String> listProjectList= new ArrayList<>();
-        listProjectList.add("Project 1"); listProjectList.add("Project 2"); listProjectList.add("Project 3");
+        final ArrayAdapter<String> materialAdapter = new ArrayAdapter<String>(
+                requireContext(),android.R.layout.simple_spinner_item,  listMaterial ){
+            @Override
+            public boolean isEnabled(int position){
+                if(position == 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            @Override
+            public View getDropDownView(int position, View convertView,
+                                        ViewGroup parent) {
+                View view = super.getDropDownView(position, convertView, parent);
+                TextView tv = (TextView) view;
+                if(position == 0){
 
-        ArrayAdapter<String> materialAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, listMaterial);
+                    tv.setTextColor(Color.GRAY);
+                }
+                else {
+                    tv.setTextColor(Color.BLACK);
+                }
+                return view;
+            }
+        };
         materialAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerMaterial.setAdapter(materialAdapter);
+
+        final ArrayAdapter<String> planAdapter = new ArrayAdapter<String>(
+                requireContext(),android.R.layout.simple_spinner_item,  listPlan ){
+            @Override
+            public boolean isEnabled(int position){
+                if(position == 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            @Override
+            public View getDropDownView(int position, View convertView,
+                                        ViewGroup parent) {
+                View view = super.getDropDownView(position, convertView, parent);
+                TextView tv = (TextView) view;
+                if(position == 0){
+
+                    tv.setTextColor(Color.GRAY);
+                }
+                else {
+                    tv.setTextColor(Color.BLACK);
+                }
+                return view;
+            }
+        };
+        planAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerPlan.setAdapter(planAdapter);
+
+        final ArrayAdapter<String> developmentAdapter = new ArrayAdapter<String>(
+                requireContext(),android.R.layout.simple_spinner_item,  listDevelopment ){
+            @Override
+            public boolean isEnabled(int position){
+                if(position == 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            @Override
+            public View getDropDownView(int position, View convertView,
+                                        ViewGroup parent) {
+                View view = super.getDropDownView(position, convertView, parent);
+                TextView tv = (TextView) view;
+                if(position == 0){
+
+                    tv.setTextColor(Color.GRAY);
+                }
+                else {
+                    tv.setTextColor(Color.BLACK);
+                }
+                return view;
+            }
+        };
+        developmentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerDevelopment.setAdapter(developmentAdapter);
+        final ArrayAdapter<String> MaterialNameListAdapter = new ArrayAdapter<String>(
+                requireContext(),android.R.layout.simple_spinner_item,  listMaterialNAme ){
+            @Override
+            public boolean isEnabled(int position){
+                if(position == 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            @Override
+            public View getDropDownView(int position, View convertView,
+                                        ViewGroup parent) {
+                View view = super.getDropDownView(position, convertView, parent);
+                TextView tv = (TextView) view;
+                if(position == 0){
+
+                    tv.setTextColor(Color.GRAY);
+                }
+                else {
+                    tv.setTextColor(Color.BLACK);
+                }
+                return view;
+            }
+        };
+        MaterialNameListAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerMaterialName.setAdapter(MaterialNameListAdapter);
+
+
+
         spinnerMaterial.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -152,9 +272,6 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
             }
         });
 
-        ArrayAdapter<String> planAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, listPlan);
-        planAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerPlan.setAdapter(planAdapter);
         spinnerPlan.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -167,10 +284,6 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
             }
         });
 
-        ArrayAdapter<String> developmentAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, listDevelopment);
-        developmentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerDevelopment.setAdapter(developmentAdapter);
-
         spinnerDevelopment.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -182,10 +295,6 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
                 return false;
             }
         });
-
-        ArrayAdapter<String> MaterialNameListAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, listMaterialNAme);
-        MaterialNameListAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerMaterialName.setAdapter(MaterialNameListAdapter);
         spinnerMaterialName.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -201,7 +310,9 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
 
 
         list = new ArrayList<>();
-        list.add("aaaa") ; list.add("aa") ; list.add("a") ;  list.add("b") ;list.add("abc") ; list.add("def") ;list.add("bbb");list.add("cc");list.add("dd");list.add("eee");list.add("ffff");list.add("ghg");list.add("88");list.add("999");list.add("110");
+        list.add("Proj 1") ; list.add("Proj 2") ; list.add("Proj 3") ;  list.add("Proj 4") ;list.add("Proj 5")
+        ;list.add("Proj 6") ;list.add("Proj 7");list.add("Proj 8");list.add("Proj 9");list.add("Proj 10");
+
 
         rlist = new ArrayList<>();
 
@@ -229,10 +340,37 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
                 View addMaterialView = layoutInflater.inflate(R.layout.groupview, null);
                 Spinner spinnerMaterialName = addMaterialView.findViewById(R.id.spinnerMaterialName);
                 ArrayList<String> listMaterialNAme = new ArrayList<>();
-                listMaterialNAme.add("M 1"); listMaterialNAme.add("M 2");listMaterialNAme.add("M3");
-                ArrayAdapter<String> materialNameAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, listMaterialNAme);
-                materialNameAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spinnerMaterialName.setAdapter(materialNameAdapter);
+                listMaterialNAme.add("Please Select"); listMaterialNAme.add("M 1"); listMaterialNAme.add("M 2");listMaterialNAme.add("M3");
+                final ArrayAdapter<String> MaterialNameListAdapter = new ArrayAdapter<String>(
+                        requireContext(),android.R.layout.simple_spinner_item,  listMaterialNAme ){
+                    @Override
+                    public boolean isEnabled(int position){
+                        if(position == 0)
+                        {
+                            return false;
+                        }
+                        else
+                        {
+                            return true;
+                        }
+                    }
+                    @Override
+                    public View getDropDownView(int position, View convertView,
+                                                ViewGroup parent) {
+                        View view = super.getDropDownView(position, convertView, parent);
+                        TextView tv = (TextView) view;
+                        if(position == 0){
+
+                            tv.setTextColor(Color.GRAY);
+                        }
+                        else {
+                            tv.setTextColor(Color.BLACK);
+                        }
+                        return view;
+                    }
+                };
+                MaterialNameListAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinnerMaterialName.setAdapter(MaterialNameListAdapter);
                 TextView qty = addMaterialView.findViewById(R.id.editQty);
                 qty.setOnTouchListener(new View.OnTouchListener() {
                     @Override
@@ -285,6 +423,7 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
         autoCompleteTextView.setAdapter(adapter);
         LinearLayoutManager newLinerLayoutManager = new GridLayoutManager(requireContext(), 3);
         projestNameRv.setLayoutManager(newLinerLayoutManager);
+        projectListHint();
 
         drop_down.setOnClickListener(v -> {
             if(linerLayout1.getVisibility() != View.VISIBLE) {
@@ -294,7 +433,10 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         String name = autoCompleteTextView.getText().toString();
-                        rlist.add(name);
+                        if(!rlist.contains(name)) {
+                            rlist.add(name);
+                        }
+                        projectListHint();
                         adapterClass.notifyDataSetChanged();
                         autoCompleteTextView.setText("");
                         autoCompleteTextView.setEnabled(false);
@@ -304,6 +446,7 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
             }else{
                 linerLayout1.setVisibility(View.GONE);
             }
+            projectListHint();
         });
         const1.setOnClickListener(v -> {
             if(linerLayout1.getVisibility() != View.VISIBLE) {
@@ -313,7 +456,10 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         String name = autoCompleteTextView.getText().toString();
-                        rlist.add(name);
+                        if(!rlist.contains(name)) {
+                            rlist.add(name);
+                        }
+                        projectListHint();
                         adapterClass.notifyDataSetChanged();
                         autoCompleteTextView.setText("");
                         autoCompleteTextView.setEnabled(false);
@@ -323,6 +469,7 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
             }else{
                 linerLayout1.setVisibility(View.GONE);
             }
+            projectListHint();
         });
         projestNameRv.setOnClickListener(v -> {
             if(linerLayout1.getVisibility() != View.VISIBLE) {
@@ -332,7 +479,10 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         String name = autoCompleteTextView.getText().toString();
-                        rlist.add(name);
+                        if(!rlist.contains(name)) {
+                            rlist.add(name);
+                        }
+                        projectListHint();
                         adapterClass.notifyDataSetChanged();
                         autoCompleteTextView.setText("");
                         autoCompleteTextView.setEnabled(false);
@@ -342,6 +492,7 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
             }else{
                 linerLayout1.setVisibility(View.GONE);
             }
+            projectListHint();
         });
         projestNameRv.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -349,6 +500,13 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
                 const1.requestFocus();
             }
         });
+    }
+    private void projectListHint(){
+        if(rlist.isEmpty()){
+            projectListHint.setVisibility(View.VISIBLE);
+        }else if( projectListHint.getVisibility() == View.VISIBLE){
+            projectListHint.setVisibility(View.INVISIBLE);
+        }
     }
     @Override
     public void onItemClick(int position) {
@@ -377,4 +535,5 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
                 linerLayout1.setVisibility(View.GONE);
             }
         }
+
 }
