@@ -26,12 +26,15 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickListener{
     private Button btnAdd , btnSub , btnSubmit;
     private LinearLayout linearLayout ;
     private EditText editQty , editNotes;
     private  ArrayList<String> rlist  , list;
+    ArrayList<String> list1;
     private  AdapterClass adapterClass;
     private  ConstraintLayout const1;
     private AutoCompleteTextView autoCompleteTextView;
@@ -39,7 +42,8 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
     private ImageView drop_down;
     private LinearLayout linerLayout1;
     TextView projectListHint;
-    ArrayAdapter<String> adapter;
+    ArrayAdapter<String> adapter,a;
+    String ProjectName;
 
 
      private Spinner spinnerMaterial  , spinnerDevelopment,spinnerPlan ,spinnerProjectList , spinnerMaterialName;
@@ -313,7 +317,7 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
 
         list = new ArrayList<>();
         list.add("Proj 1") ; list.add("Proj 2") ; list.add("Proj 3") ;  list.add("Proj 4") ;list.add("Proj 5");
-        list.add("Proj 6") ;list.add("Proj 7");list.add("Proj 8");list.add("Proj 9");list.add("Proj 10");
+        list.add("Proj 6") ;list.add("Proj 7");list.add("Proj 8");list.add("Proj 9");
 
         adapter = new ArrayAdapter<>( requireContext(),android.R.layout.simple_dropdown_item_1line,list);
         autoCompleteTextView.setAdapter(adapter);
@@ -420,11 +424,9 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
         });
     }
     private  void projectList(){
-
         LinearLayoutManager newLinerLayoutManager = new GridLayoutManager(requireContext(), 3);
         projestNameRv.setLayoutManager(newLinerLayoutManager);
         projectListHint();
-
         drop_down.setOnClickListener(v -> {
                 ItemAddRemove();
         });
@@ -451,10 +453,17 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
     @Override
     public void onItemClick(int position) {
          if(position>=0){
+             String projectName = rlist.get(position);
+             list.add(projectName);
+             Collections.sort(list);
+             a = new ArrayAdapter<>( requireContext(),android.R.layout.simple_dropdown_item_1line,list);
+             autoCompleteTextView.setAdapter(a);
+             a.notifyDataSetChanged();
              rlist.remove(position);
              adapterClass.notifyDataSetChanged();
          }
     }
+
     @Override
     public void onItemClick() {
             ItemAddRemove();
@@ -473,8 +482,7 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
                         projectListHint();
                         list.remove(position);
                     }
-                    ArrayList<String> list1 = new ArrayList<>(list);
-                    ArrayAdapter<String> a = new ArrayAdapter<>( requireContext(),android.R.layout.simple_dropdown_item_1line,list1);
+                    a = new ArrayAdapter<>( requireContext(),android.R.layout.simple_dropdown_item_1line,list);
                     autoCompleteTextView.setAdapter(a);
                     a.notifyDataSetChanged();
                     adapterClass.notifyDataSetChanged();
