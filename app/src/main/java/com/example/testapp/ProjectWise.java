@@ -338,7 +338,6 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
                 if (linerLayout1.getVisibility() == View.VISIBLE) {
                     linerLayout1.setVisibility(View.GONE);
                 }
-
                 LayoutInflater layoutInflater = LayoutInflater.from(getContext());
                 View addMaterialView = layoutInflater.inflate(R.layout.groupview, null);
                 Spinner spinnerMaterialName = addMaterialView.findViewById(R.id.spinnerMaterialName);
@@ -427,88 +426,13 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
         projectListHint();
 
         drop_down.setOnClickListener(v -> {
-            if(linerLayout1.getVisibility() != View.VISIBLE) {
-                linerLayout1.setVisibility(View.VISIBLE);
-                autoCompleteTextView.setEnabled(true);
-                autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        String name = autoCompleteTextView.getText().toString();
-                        if (!rlist.contains(name)) {
-                            rlist.add(name);
-                            projectListHint();
-                            list.remove(position);
-                        }
-                        ArrayList<String> list1 = new ArrayList<>(list);
-                        ArrayAdapter<String> a = new ArrayAdapter<>( requireContext(),android.R.layout.simple_dropdown_item_1line,list1);
-                        autoCompleteTextView.setAdapter(a);
-                        a.notifyDataSetChanged();
-                        adapterClass.notifyDataSetChanged();
-                        autoCompleteTextView.setText("");
-                        autoCompleteTextView.setEnabled(false);
-                        linerLayout1.setVisibility(View.GONE);
-                    }
-                });
-            }else{
-                linerLayout1.setVisibility(View.GONE);
-            }
-            projectListHint();
+                ItemAddRemove();
         });
         const1.setOnClickListener(v -> {
-            if(linerLayout1.getVisibility() != View.VISIBLE) {
-                linerLayout1.setVisibility(View.VISIBLE);
-                autoCompleteTextView.setEnabled(true);
-                autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        String name = autoCompleteTextView.getText().toString();
-                        Log.d("Debug", "Name to add: " + name);
-                        if (!rlist.contains(name)) {
-                            rlist.add(name);
-                            list.remove(name);
-                            Log.d("Debug", "Item removed from list: " + name);
-                            adapter.notifyDataSetChanged();
-                            projectListHint();
-                        }
-                        projectListHint();
-                        adapterClass.notifyDataSetChanged();
-                        autoCompleteTextView.setText("");
-                        autoCompleteTextView.setEnabled(false);
-                        linerLayout1.setVisibility(View.GONE);
-                    }
-                });
-            }else{
-                linerLayout1.setVisibility(View.GONE);
-            }
-            projectListHint();
+                ItemAddRemove();
         });
         projestNameRv.setOnClickListener(v -> {
-            if(linerLayout1.getVisibility() != View.VISIBLE) {
-                linerLayout1.setVisibility(View.VISIBLE);
-                autoCompleteTextView.setEnabled(true);
-                autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        String name = autoCompleteTextView.getText().toString();
-                        Log.d("Debug", "Name to add: " + name);
-                        if (!rlist.contains(name)) {
-                            rlist.add(name);
-                            list.remove(name);
-                            Log.d("Debug", "Item removed from list: " + name);
-                            adapter.notifyDataSetChanged();
-                            projectListHint();
-                        }
-                        projectListHint();
-                        adapterClass.notifyDataSetChanged();
-                        autoCompleteTextView.setText("");
-                        autoCompleteTextView.setEnabled(false);
-                        linerLayout1.setVisibility(View.GONE);
-                    }
-                });
-            }else{
-                linerLayout1.setVisibility(View.GONE);
-            }
-            projectListHint();
+                ItemAddRemove();
         });
         projestNameRv.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -529,34 +453,40 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
          if(position>=0){
              rlist.remove(position);
              adapterClass.notifyDataSetChanged();
-
          }
     }
     @Override
     public void onItemClick() {
-            if(linerLayout1.getVisibility() != View.VISIBLE) {
-                linerLayout1.setVisibility(View.VISIBLE);
-                autoCompleteTextView.setEnabled(true);
-                autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        String name = autoCompleteTextView.getText().toString();
-                        Log.d("Debug", "Name to add: " + name);
-                        if (!rlist.contains(name)) {
-                            rlist.add(name);
-                            list.remove(name);
-                            Log.d("Debug", "Item removed from list: " + name);
-                            adapter.notifyDataSetChanged();
-                            projectListHint();
-                        }
-                        adapterClass.notifyDataSetChanged();
-                        autoCompleteTextView.setText("");
-                        autoCompleteTextView.setEnabled(false);
-                        linerLayout1.setVisibility(View.GONE);
-                    }
-                });
-            }else{
-                linerLayout1.setVisibility(View.GONE);
-            }
+            ItemAddRemove();
         }
+
+    public void ItemAddRemove(){
+        if(linerLayout1.getVisibility() != View.VISIBLE) {
+            linerLayout1.setVisibility(View.VISIBLE);
+            autoCompleteTextView.setEnabled(true);
+            autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    String name = autoCompleteTextView.getText().toString();
+                    if (!rlist.contains(name)) {
+                        rlist.add(name);
+                        projectListHint();
+                        list.remove(position);
+                    }
+                    ArrayList<String> list1 = new ArrayList<>(list);
+                    ArrayAdapter<String> a = new ArrayAdapter<>( requireContext(),android.R.layout.simple_dropdown_item_1line,list1);
+                    autoCompleteTextView.setAdapter(a);
+                    a.notifyDataSetChanged();
+                    adapterClass.notifyDataSetChanged();
+                    autoCompleteTextView.setText("");
+                    autoCompleteTextView.setEnabled(false);
+                    linerLayout1.setVisibility(View.GONE);
+                }
+            });
+        }else{
+            linerLayout1.setVisibility(View.GONE);
+        }
+        projectListHint();
+
+    }
 }
