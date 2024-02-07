@@ -42,6 +42,7 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
     private ImageView drop_down;
     private LinearLayout linerLayout1;
     TextView projectListHint;
+    int counter =1;
     ArrayAdapter<String> adapter,a;
     String ProjectName;
 
@@ -328,9 +329,9 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
         adapterClass.notifyDataSetChanged();
         projectList();
         adapter.notifyDataSetChanged();
-
         addLayout();
         subLayout();
+
     }
     private  void addLayout(){
         btnAdd.setOnClickListener(new View.OnClickListener() {
@@ -339,70 +340,73 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
                 addMaterialView();
             }
             private void addMaterialView() {
-                if (linerLayout1.getVisibility() == View.VISIBLE) {
-                    linerLayout1.setVisibility(View.GONE);
-                }
-                LayoutInflater layoutInflater = LayoutInflater.from(getContext());
-                View addMaterialView = layoutInflater.inflate(R.layout.groupview, null);
-                Spinner spinnerMaterialName = addMaterialView.findViewById(R.id.spinnerMaterialName);
-                ArrayList<String> listMaterialNAme = new ArrayList<>();
-                listMaterialNAme.add("Please Select"); listMaterialNAme.add("M 1"); listMaterialNAme.add("M 2");listMaterialNAme.add("M3");
-                final ArrayAdapter<String> MaterialNameListAdapter = new ArrayAdapter<String>(
-                        requireContext(),android.R.layout.simple_spinner_item,  listMaterialNAme ){
-                    @Override
-                    public boolean isEnabled(int position){
-                        if(position == 0)
-                        {
+                if (counter <= 4) {
+                    if (linerLayout1.getVisibility() == View.VISIBLE) {
+                        linerLayout1.setVisibility(View.GONE);
+                    }
+                    LayoutInflater layoutInflater = LayoutInflater.from(getContext());
+                    View addMaterialView = layoutInflater.inflate(R.layout.groupview, null);
+                    Spinner spinnerMaterialName = addMaterialView.findViewById(R.id.spinnerMaterialName);
+                    ArrayList<String> listMaterialNAme = new ArrayList<>();
+                    listMaterialNAme.add("Please Select");
+                    listMaterialNAme.add("M 1");
+                    listMaterialNAme.add("M 2");
+                    listMaterialNAme.add("M3");
+                    final ArrayAdapter<String> MaterialNameListAdapter = new ArrayAdapter<String>(
+                            requireContext(), android.R.layout.simple_spinner_item, listMaterialNAme) {
+                        @Override
+                        public boolean isEnabled(int position) {
+                            if (position == 0) {
+                                return false;
+                            } else {
+                                return true;
+                            }
+                        }
+
+                        @Override
+                        public View getDropDownView(int position, View convertView,
+                                                    ViewGroup parent) {
+                            View view = super.getDropDownView(position, convertView, parent);
+                            TextView tv = (TextView) view;
+                            if (position == 0) {
+
+                                tv.setTextColor(Color.GRAY);
+                            } else {
+                                tv.setTextColor(Color.BLACK);
+                            }
+                            return view;
+                        }
+                    };
+                    MaterialNameListAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    spinnerMaterialName.setAdapter(MaterialNameListAdapter);
+                    TextView qty = addMaterialView.findViewById(R.id.editQty);
+                    qty.setOnTouchListener(new View.OnTouchListener() {
+                        @Override
+                        public boolean onTouch(View v, MotionEvent event) {
+                            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                                if (linerLayout1.getVisibility() == View.VISIBLE) {
+                                    linerLayout1.setVisibility(View.GONE);
+                                }
+                            }
                             return false;
                         }
-                        else
-                        {
-                            return true;
-                        }
-                    }
-                    @Override
-                    public View getDropDownView(int position, View convertView,
-                                                ViewGroup parent) {
-                        View view = super.getDropDownView(position, convertView, parent);
-                        TextView tv = (TextView) view;
-                        if(position == 0){
+                    });
 
-                            tv.setTextColor(Color.GRAY);
-                        }
-                        else {
-                            tv.setTextColor(Color.BLACK);
-                        }
-                        return view;
-                    }
-                };
-                MaterialNameListAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spinnerMaterialName.setAdapter(MaterialNameListAdapter);
-                TextView qty = addMaterialView.findViewById(R.id.editQty);
-                qty.setOnTouchListener(new View.OnTouchListener() {
-                    @Override
-                    public boolean onTouch(View v, MotionEvent event) {
-                        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                            if (linerLayout1.getVisibility() == View.VISIBLE) {
-                                linerLayout1.setVisibility(View.GONE);
+                    spinnerMaterialName.setOnTouchListener(new View.OnTouchListener() {
+                        @Override
+                        public boolean onTouch(View v, MotionEvent event) {
+                            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                                if (linerLayout1.getVisibility() == View.VISIBLE) {
+                                    linerLayout1.setVisibility(View.GONE);
+                                }
                             }
+                            return false;
                         }
-                        return false;
-                    }
-                });
+                    });
 
-                spinnerMaterialName.setOnTouchListener(new View.OnTouchListener() {
-                    @Override
-                    public boolean onTouch(View v, MotionEvent event) {
-                        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                            if (linerLayout1.getVisibility() == View.VISIBLE) {
-                                linerLayout1.setVisibility(View.GONE);
-                            }
-                        }
-                        return false;
-                    }
-                });
-
-                linearLayout.addView(addMaterialView);
+                    linearLayout.addView(addMaterialView);
+                    counter += 1;
+                }
             }
         });
     }
@@ -419,6 +423,7 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
                 int childCount  = linearLayout.getChildCount();
                 if(childCount>0){
                     linearLayout.removeViewAt(childCount-1);
+                    counter--;
                 }
             }
         });
