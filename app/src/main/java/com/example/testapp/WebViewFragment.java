@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -18,14 +19,15 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
 import com.airbnb.lottie.LottieAnimationView;
+
 
 public class WebViewFragment extends Fragment implements ConnectivityChangeListener {
     private WebView mWebView;
     private ProgressBar mProgressBar;
-    private String currentUrl;
+    private String currentUrl, newUrl = "";
     private LottieAnimationView animationView;
     private boolean isConnected;
     private TextView NointernetTxtView;
@@ -41,6 +43,7 @@ public class WebViewFragment extends Fragment implements ConnectivityChangeListe
                 animationView.setVisibility(View.GONE);
                 NointernetTxtView.setVisibility(View.GONE);
                 mWebView.setVisibility(View.VISIBLE);
+                loadUrl();
             }
             onConnectivityChanged(isConnected);
         }
@@ -49,15 +52,19 @@ public class WebViewFragment extends Fragment implements ConnectivityChangeListe
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_web_view, container, false);
-        mWebView = v.findViewById(R.id.webViewElement);
-        mProgressBar = v.findViewById(R.id.progressBar);
-        animationView = v.findViewById(R.id.animationView);
-        NointernetTxtView=v.findViewById(R.id.NointernetTxtView);
+        return inflater.inflate(R.layout.fragment_web_view, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mWebView = view.findViewById(R.id.webViewElement);
+        mProgressBar = view.findViewById(R.id.progressBar);
+        animationView = view.findViewById(R.id.animationView);
+        NointernetTxtView = view.findViewById(R.id.NointernetTxtView);
         animationView.setVisibility(View.VISIBLE);
         NointernetTxtView.setVisibility(View.VISIBLE);
         mWebView.setVisibility(View.GONE);
-
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
 
@@ -66,10 +73,6 @@ public class WebViewFragment extends Fragment implements ConnectivityChangeListe
 
         mWebView.getSettings().setJavaScriptEnabled(true);
 
-        if (savedInstanceState != null) {
-            currentUrl = savedInstanceState.getString("currentUrl");
-            loadUrl();
-        }
         mWebView.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageStarted(WebView view, String url, android.graphics.Bitmap favicon) {
@@ -88,17 +91,22 @@ public class WebViewFragment extends Fragment implements ConnectivityChangeListe
                 super.onPageFinished(view, url);
                 mProgressBar.setVisibility(View.GONE);
             }
-        });
-        loadUrl();
 
-        return v;
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+                currentUrl = request.getUrl().toString();
+                Log.d("WebViewFragment", "currentUrl" + currentUrl);
+                return super.shouldOverrideUrlLoading(view, request);
+            }
+        });
     }
 
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putString("currentUrl", mWebView.getUrl());
-        Log.d("WebViewFragment", "URL Instace Save + "+ mWebView.getUrl());
+        Bundle webViewState = new Bundle();
+        mWebView.saveState(webViewState);
+        outState.putBundle("WebViewState", webViewState);
     }
 
     private void loadUrl() {
@@ -107,7 +115,7 @@ public class WebViewFragment extends Fragment implements ConnectivityChangeListe
             mWebView.loadUrl(currentUrl);
         } else {
             Log.d("WebViewFragment", "Default URL loaded as currentUrl is empty");
-            mWebView.loadUrl("https://www.google.com");
+            mWebView.loadUrl("https://www.google.com/");
         }
     }
 
@@ -117,7 +125,6 @@ public class WebViewFragment extends Fragment implements ConnectivityChangeListe
             animationView.setVisibility(View.GONE);
             NointernetTxtView.setVisibility(View.GONE);
             mWebView.setVisibility(View.VISIBLE);
-//            loadUrl();
         }
     }
 }
