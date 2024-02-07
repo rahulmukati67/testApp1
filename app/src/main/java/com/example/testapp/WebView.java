@@ -13,7 +13,10 @@ import java.util.Objects;
 public class WebView extends AppCompatActivity {
     private ActivityWebViewBinding binding;
     private TabLayout tabLayout1;
-    private WebViewFragment webViewFragment; // Member variable to hold the WebViewFragment instance
+    private WebViewFragment webViewFragment ;
+    private Tab2 Tab2 ;
+    private Tab3 Tab3 ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +31,12 @@ public class WebView extends AppCompatActivity {
             transaction.replace(R.id.fragment_container, webViewFragment);
             transaction.commit();
         }
+        if (Tab2 == null) {
+            Tab2 = new Tab2();
+        }
+        if (Tab3 == null) {
+            Tab3 = new Tab3();
+        }
 
         tabLayout1.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -38,13 +47,13 @@ public class WebView extends AppCompatActivity {
                         fragment = webViewFragment; // Use the existing fragment instance
                         break;
                     case "Tab2":
-                        fragment = new Tab2();
+                        fragment =  Tab2;
                         break;
                     case "Tab3":
-                        fragment = new Tab3();
+                        fragment =  Tab3;
                         break;
                     default:
-                        fragment = new Tab2();
+                        fragment =  Tab2;
                 }
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.fragment_container, fragment);

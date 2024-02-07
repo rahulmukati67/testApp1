@@ -31,6 +31,8 @@ public class WebViewFragment extends Fragment implements ConnectivityChangeListe
     private LottieAnimationView animationView;
     private boolean isConnected;
     private TextView NointernetTxtView;
+    private boolean isUrlLoaded = false;
+
 
     private BroadcastReceiver connectivityReceiver = new BroadcastReceiver() {
         @Override
@@ -43,7 +45,8 @@ public class WebViewFragment extends Fragment implements ConnectivityChangeListe
                 animationView.setVisibility(View.GONE);
                 NointernetTxtView.setVisibility(View.GONE);
                 mWebView.setVisibility(View.VISIBLE);
-                loadUrl();
+                    loadUrl();
+
             }
             onConnectivityChanged(isConnected);
         }
@@ -52,7 +55,8 @@ public class WebViewFragment extends Fragment implements ConnectivityChangeListe
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_web_view, container, false);
+        setRetainInstance(true);
+    return inflater.inflate(R.layout.fragment_web_view, container, false);
     }
 
     @Override
@@ -85,11 +89,13 @@ public class WebViewFragment extends Fragment implements ConnectivityChangeListe
                     NointernetTxtView.setVisibility(View.VISIBLE);
                     mWebView.setVisibility(View.GONE);
                 }
+                isUrlLoaded = true;
             }
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
                 mProgressBar.setVisibility(View.GONE);
+
             }
 
             @Override
@@ -99,6 +105,9 @@ public class WebViewFragment extends Fragment implements ConnectivityChangeListe
                 return super.shouldOverrideUrlLoading(view, request);
             }
         });
+        if (!isUrlLoaded) {
+            loadUrl();
+        }
     }
 
     @Override

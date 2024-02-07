@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -37,6 +39,8 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
     private ImageView drop_down;
     private LinearLayout linerLayout1;
     TextView projectListHint;
+    ArrayAdapter<String> adapter;
+
 
      private Spinner spinnerMaterial  , spinnerDevelopment,spinnerPlan ,spinnerProjectList , spinnerMaterialName;
     private LinearLayoutListener linearLayoutListener;
@@ -307,24 +311,23 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
             }
         });
 
-
-
         list = new ArrayList<>();
-        list.add("Proj 1") ; list.add("Proj 2") ; list.add("Proj 3") ;  list.add("Proj 4") ;list.add("Proj 5")
-        ;list.add("Proj 6") ;list.add("Proj 7");list.add("Proj 8");list.add("Proj 9");list.add("Proj 10");
+        list.add("Proj 1") ; list.add("Proj 2") ; list.add("Proj 3") ;  list.add("Proj 4") ;list.add("Proj 5");
+        list.add("Proj 6") ;list.add("Proj 7");list.add("Proj 8");list.add("Proj 9");list.add("Proj 10");
 
+        adapter = new ArrayAdapter<>( requireContext(),android.R.layout.simple_dropdown_item_1line,list);
+        autoCompleteTextView.setAdapter(adapter);
 
         rlist = new ArrayList<>();
-
         adapterClass = new AdapterClass(rlist , getContext(), ProjectWise.this , projestNameRv );
         projestNameRv.setAdapter(adapterClass);
+        adapterClass.notifyDataSetChanged();
+        projectList();
+        adapter.notifyDataSetChanged();
 
-      projectList();
-      addLayout();
-      subLayout();
-
+        addLayout();
+        subLayout();
     }
-
     private  void addLayout(){
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -419,8 +422,6 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
     }
     private  void projectList(){
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(requireContext(),android.R.layout.simple_dropdown_item_1line,list);
-        autoCompleteTextView.setAdapter(adapter);
         LinearLayoutManager newLinerLayoutManager = new GridLayoutManager(requireContext(), 3);
         projestNameRv.setLayoutManager(newLinerLayoutManager);
         projectListHint();
@@ -433,10 +434,15 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         String name = autoCompleteTextView.getText().toString();
-                        if(!rlist.contains(name)) {
+                        if (!rlist.contains(name)) {
                             rlist.add(name);
+                            projectListHint();
+                            list.remove(position);
                         }
-                        projectListHint();
+                        ArrayList<String> list1 = new ArrayList<>(list);
+                        ArrayAdapter<String> a = new ArrayAdapter<>( requireContext(),android.R.layout.simple_dropdown_item_1line,list1);
+                        autoCompleteTextView.setAdapter(a);
+                        a.notifyDataSetChanged();
                         adapterClass.notifyDataSetChanged();
                         autoCompleteTextView.setText("");
                         autoCompleteTextView.setEnabled(false);
@@ -456,8 +462,13 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         String name = autoCompleteTextView.getText().toString();
-                        if(!rlist.contains(name)) {
+                        Log.d("Debug", "Name to add: " + name);
+                        if (!rlist.contains(name)) {
                             rlist.add(name);
+                            list.remove(name);
+                            Log.d("Debug", "Item removed from list: " + name);
+                            adapter.notifyDataSetChanged();
+                            projectListHint();
                         }
                         projectListHint();
                         adapterClass.notifyDataSetChanged();
@@ -479,8 +490,13 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         String name = autoCompleteTextView.getText().toString();
-                        if(!rlist.contains(name)) {
+                        Log.d("Debug", "Name to add: " + name);
+                        if (!rlist.contains(name)) {
                             rlist.add(name);
+                            list.remove(name);
+                            Log.d("Debug", "Item removed from list: " + name);
+                            adapter.notifyDataSetChanged();
+                            projectListHint();
                         }
                         projectListHint();
                         adapterClass.notifyDataSetChanged();
@@ -513,6 +529,7 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
          if(position>=0){
              rlist.remove(position);
              adapterClass.notifyDataSetChanged();
+
          }
     }
     @Override
@@ -524,7 +541,14 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         String name = autoCompleteTextView.getText().toString();
-                        rlist.add(name);
+                        Log.d("Debug", "Name to add: " + name);
+                        if (!rlist.contains(name)) {
+                            rlist.add(name);
+                            list.remove(name);
+                            Log.d("Debug", "Item removed from list: " + name);
+                            adapter.notifyDataSetChanged();
+                            projectListHint();
+                        }
                         adapterClass.notifyDataSetChanged();
                         autoCompleteTextView.setText("");
                         autoCompleteTextView.setEnabled(false);
@@ -535,5 +559,4 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
                 linerLayout1.setVisibility(View.GONE);
             }
         }
-
 }
