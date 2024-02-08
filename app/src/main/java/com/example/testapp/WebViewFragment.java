@@ -11,29 +11,28 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.airbnb.lottie.LottieAnimationView;
 
-
-public class WebViewFragment extends Fragment implements ConnectivityChangeListener {
+public class WebViewFragment extends Fragment implements ConnectivityChangeListener , SwipeRefreshLayout.OnRefreshListener {
     private WebView mWebView;
-
     private ProgressBar mProgressBar;
-    private String currentUrl, newUrl = "";
+    private String currentUrl;
     private LottieAnimationView animationView;
     private boolean isConnected;
     Bundle webViewState;
+    SwipeRefreshLayout swipeRefreshLayout;
     private TextView NointernetTxtView;
     private boolean isUrlLoaded = false;
 
@@ -49,12 +48,10 @@ public class WebViewFragment extends Fragment implements ConnectivityChangeListe
                 NointernetTxtView.setVisibility(View.GONE);
                 mWebView.setVisibility(View.VISIBLE);
                     loadUrl();
-
             }
             onConnectivityChanged(isConnected);
         }
     };
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -81,6 +78,9 @@ public class WebViewFragment extends Fragment implements ConnectivityChangeListe
 
         mWebView.getSettings().setJavaScriptEnabled(true);
 
+        swipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout);
+        swipeRefreshLayout.setOnRefreshListener(this);
+
         mWebView.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageStarted(WebView view, String url, android.graphics.Bitmap favicon) {
@@ -98,15 +98,20 @@ public class WebViewFragment extends Fragment implements ConnectivityChangeListe
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-                mProgressBar.setVisibility(View.GONE);
-
+                mProgressBar.setVisibility(View.INVISIBLE);
             }
-
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
                 currentUrl = request.getUrl().toString();
                 Log.d("WebViewFragment", "currentUrl" + currentUrl);
                 return super.shouldOverrideUrlLoading(view, request);
+            }
+        });
+        mWebView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public void onProgressChanged(WebView view, int newProgress) {
+                super.onProgressChanged(view, newProgress);
+                mProgressBar.setProgress(newProgress);
             }
         });
 
@@ -122,7 +127,6 @@ public class WebViewFragment extends Fragment implements ConnectivityChangeListe
                 }
             }
         });
-
         if (!isUrlLoaded) {
             loadUrl();
         }
@@ -135,7 +139,6 @@ public class WebViewFragment extends Fragment implements ConnectivityChangeListe
         mWebView.saveState(webViewState);
         outState.putBundle("WebViewState", webViewState);
     }
-
     private void loadUrl() {
         if (currentUrl != null && !currentUrl.isEmpty()) {
             Log.d("WebViewFragment", "Loading URL: " + currentUrl);
@@ -153,5 +156,12 @@ public class WebViewFragment extends Fragment implements ConnectivityChangeListe
             NointernetTxtView.setVisibility(View.GONE);
             mWebView.setVisibility(View.VISIBLE);
         }
+    }
+
+    @Override
+    public void onRefresh() {
+        mWebView.reload();
+        swipeRefreshLayout.setRefreshing(false);
+        Log.d("Refresh" , "Refreashing");
     }
 }
