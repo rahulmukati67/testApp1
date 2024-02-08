@@ -288,12 +288,17 @@
                 app:layout_constraintHorizontal_bias="0.619"
                 app:layout_constraintStart_toStartOf="parent" />
 
-            <Spinner
-                android:id="@+id/spinnerMaterialName"
+            <TextView
+                android:id="@+id/TextViewMaterialName"
                 android:layout_width="150dp"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
+                android:minHeight="30dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="15dp"
+                android:textColor="@color/black"
+                android:paddingStart="10dp"
+                android:hint="Please Select "
+                android:gravity="center_vertical"
                 android:background="@drawable/picker_background"
                 app:layout_constraintEnd_toStartOf="@+id/editQty"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -308,11 +313,12 @@
                 android:layout_marginTop="5dp"
                 android:inputType="number"
                 android:maxLength="5"
+                android:paddingStart="10dp"
                 android:background="@drawable/edit_bg"
                 android:layout_marginEnd="15dp"
-                app:layout_constraintBottom_toBottomOf="@+id/spinnerMaterialName"
+                app:layout_constraintBottom_toBottomOf="@+id/TextViewMaterialName"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/spinnerMaterialName"
+                app:layout_constraintStart_toEndOf="@+id/TextViewMaterialName"
                 app:layout_constraintTop_toBottomOf="@+id/textView7"
                 app:layout_constraintVertical_bias="0.0" />
 
@@ -326,7 +332,58 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintEnd_toStartOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/spinnerMaterialName"/>
+                app:layout_constraintTop_toBottomOf="@id/MaterialNameLinearLayout"/>
+
+            <LinearLayout
+                android:id="@+id/MaterialNameLinearLayout"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/border_bg"
+                android:layout_marginTop="-1dp"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/TextViewMaterialName">
+
+                <AutoCompleteTextView
+                    android:id="@+id/MaterialACTV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="25dp"
+                    android:textSize="14sp"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginStart="15dp"
+                    android:padding="5dp"
+                    android:focusable="true"
+                    android:hint="Select Project"
+                    android:background="@drawable/autoselectborder"
+                    android:clickable="true"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="25dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="15dp"
+                    android:text="Please enter 3 or more character"/>
+
+
+            </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
 
             <LinearLayout
                 android:id="@+id/linerLayout1"

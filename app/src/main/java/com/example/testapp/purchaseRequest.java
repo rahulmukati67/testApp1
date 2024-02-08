@@ -85,9 +85,12 @@ public class purchaseRequest extends AppCompatActivity implements ProjectWise.Li
     @Override
     public void hideLinearLayout() {
         LinearLayout linearLayout = findViewById(R.id.linerLayout1);
+        LinearLayout MaterialNameLinearLayout = findViewById(R.id.MaterialNameLinearLayout);
         if (linearLayout.getVisibility() == View.VISIBLE) {
             linearLayout.setVisibility(View.GONE);
-            Log.d("MainActivity", "LinearLayout visibility set to GONE");
+        }
+        if (MaterialNameLinearLayout.getVisibility() == View.VISIBLE) {
+            MaterialNameLinearLayout.setVisibility(View.GONE);
         }
     }
 }
