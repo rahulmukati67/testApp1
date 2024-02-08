@@ -18,6 +18,8 @@ import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -26,13 +28,14 @@ import com.airbnb.lottie.LottieAnimationView;
 
 public class WebViewFragment extends Fragment implements ConnectivityChangeListener {
     private WebView mWebView;
+
     private ProgressBar mProgressBar;
     private String currentUrl, newUrl = "";
     private LottieAnimationView animationView;
     private boolean isConnected;
+    Bundle webViewState;
     private TextView NointernetTxtView;
     private boolean isUrlLoaded = false;
-
 
     private BroadcastReceiver connectivityReceiver = new BroadcastReceiver() {
         @Override
@@ -56,7 +59,8 @@ public class WebViewFragment extends Fragment implements ConnectivityChangeListe
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         setRetainInstance(true);
-    return inflater.inflate(R.layout.fragment_web_view, container, false);
+
+        return inflater.inflate(R.layout.fragment_web_view, container, false);
     }
 
     @Override
@@ -105,6 +109,20 @@ public class WebViewFragment extends Fragment implements ConnectivityChangeListe
                 return super.shouldOverrideUrlLoading(view, request);
             }
         });
+
+        requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                if (mWebView.canGoBack()) {
+                    mWebView.goBack();
+                } else {
+                    getParentFragmentManager().popBackStack();
+                    Intent intent = new Intent(requireContext(), startActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
+
         if (!isUrlLoaded) {
             loadUrl();
         }
@@ -113,7 +131,7 @@ public class WebViewFragment extends Fragment implements ConnectivityChangeListe
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        Bundle webViewState = new Bundle();
+         webViewState = new Bundle();
         mWebView.saveState(webViewState);
         outState.putBundle("WebViewState", webViewState);
     }
