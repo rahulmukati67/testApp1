@@ -358,9 +358,16 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
         btnSub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int childCount  = linearLayout.getChildCount();
-                if(childCount>0){
-                    linearLayout.removeViewAt(childCount-1);
+                int childCount = linearLayout.getChildCount();
+                if (childCount > 0) {
+                    View lastChild = linearLayout.getChildAt(childCount - 1);
+                    TextView TextViewMaterial1 = lastChild.findViewById(R.id.TextViewMaterial);
+                    String materialText = TextViewMaterial1.getText().toString().trim();
+                    if (!materialText.isEmpty()) {
+                        listMaterialNAme.add(materialText);
+                        Collections.sort(listMaterialNAme);
+                    }
+                    linearLayout.removeViewAt(childCount - 1);
                     counter--;
                 }
                 setVisibilities();
