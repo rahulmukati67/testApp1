@@ -3,5 +3,6 @@
     <style name="Base.Theme.TestApp" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="android:statusBarColor">#075E54</item>
     </style>
 </resources>

@@ -44,15 +44,6 @@
                 app:layout_constraintStart_toEndOf="@+id/txtProjectList"
                 app:layout_constraintTop_toTopOf="@+id/txtProjectList" />
 
-<!--            <Spinner-->
-<!--                android:id="@+id/spinnerProjectList"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="30dp"-->
-<!--                android:layout_marginTop="5dp"-->
-<!--                android:clickable="true"-->
-<!--                android:background="@drawable/picker_background"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/txtProjectList" />-->
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/const1"
@@ -313,6 +304,7 @@
                 android:layout_marginTop="5dp"
                 android:inputType="number"
                 android:maxLength="5"
+                android:hint="00"
                 android:paddingStart="10dp"
                 android:background="@drawable/edit_bg"
                 android:layout_marginEnd="15dp"
@@ -370,20 +362,7 @@
                     android:layout_marginStart="15dp"
                     android:text="Please enter 3 or more character"/>
 
-
             </LinearLayout>
-
-
-
-
-
-
-
-
-
-
-
-
 
             <LinearLayout
                 android:id="@+id/linerLayout1"

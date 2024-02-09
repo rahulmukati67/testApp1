@@ -1,14 +1,508 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#DAD8D8"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Tab2">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+     <androidx.constraintlayout.widget.ConstraintLayout
+         android:id="@+id/parentConst"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content">
 
-</FrameLayout>
+         <androidx.cardview.widget.CardView
+             android:id="@+id/CardView1"
+             app:layout_constraintTop_toTopOf="parent"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintEnd_toEndOf="parent"
+             android:layout_margin="30dp"
+             app:cardCornerRadius="20dp"
+             app:cardBackgroundColor="@color/white"
+             app:cardElevation="10dp"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content">
+
+             <androidx.constraintlayout.widget.ConstraintLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent">
+
+                 <TextView
+                     android:id="@+id/User1"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center_horizontal"
+                     android:layout_marginTop="5dp"
+                     android:text="Title"
+                     android:textColor="@color/black"
+                     android:textSize="26sp"
+                     android:textStyle="bold"
+                     app:layout_constraintEnd_toEndOf="parent"
+                     app:layout_constraintStart_toStartOf="parent"
+                     app:layout_constraintTop_toTopOf="parent" />
+
+                 <TextView
+                     android:id="@+id/textDate1"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center_horizontal"
+                     android:layout_marginStart="20dp"
+                     android:text="Date : "
+                     android:textColor="@color/black"
+                     android:textSize="20sp"
+                     app:layout_constraintBaseline_toBaselineOf="@+id/edittxtDate1"
+                     app:layout_constraintStart_toStartOf="parent" />
+
+                 <TextView
+                     android:id="@+id/edittxtDate1"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center_horizontal"
+                     android:background="@drawable/edit_bg"
+                     android:hint="25/10/2024"
+                     android:clickable="false"
+                     android:padding="5dp"
+                     android:textColor="@color/black"
+                     android:layout_marginTop="10dp"
+                     android:textSize="20sp"
+                     app:layout_constraintBottom_toTopOf="@+id/edittxtNumber1"
+                     app:layout_constraintStart_toStartOf="@+id/guideline1"
+                     app:layout_constraintTop_toBottomOf="@+id/User1" />
+
+                 <TextView
+                     android:id="@+id/textCardNumber1"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginStart="20dp"
+                     android:text="Number :"
+                     android:textColor="@color/black"
+                     android:textSize="20sp"
+                     app:layout_constraintBaseline_toBaselineOf="@+id/edittxtNumber1"
+                     app:layout_constraintStart_toStartOf="parent" />
+
+                 <EditText
+                     android:id="@+id/edittxtNumber1"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:minWidth="15dp"
+                     android:background="@drawable/edit_bg"
+                     android:text="7582461259"
+                     android:textColor="@color/black"
+                     android:textSize="20sp"
+                     android:padding="5dp"
+                     android:inputType="number"
+                     android:maxLength="12"
+                     android:layout_marginTop="10dp"
+                     android:layout_marginBottom="10dp"
+                     app:layout_constraintStart_toStartOf="@+id/guideline1"
+                     app:layout_constraintTop_toBottomOf="@+id/edittxtDate1" />
+
+                 <TextView
+                     android:id="@+id/textCardNumber2"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginStart="20dp"
+                     android:text="Number :"
+                     android:textColor="@color/black"
+                     android:textSize="20sp"
+                     app:layout_constraintBaseline_toBaselineOf="@+id/edittxtNumber2"
+                     app:layout_constraintStart_toStartOf="parent" />
+
+                 <EditText
+                     android:id="@+id/edittxtNumber2"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:minWidth="15dp"
+                     android:background="@drawable/edit_bg"
+                     android:text="8542626556"
+                     android:textColor="@color/black"
+                     android:textSize="20sp"
+                     android:padding="5dp"
+                     android:inputType="number"
+                     android:maxLength="12"
+                     android:layout_marginTop="10dp"
+                     android:layout_marginBottom="10dp"
+                     app:layout_constraintStart_toStartOf="@+id/guideline1"
+                     app:layout_constraintTop_toBottomOf="@+id/edittxtNumber1" />
+
+                 <TextView
+                     android:id="@+id/textCardNumber3"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginStart="20dp"
+                     android:text="Number :"
+                     android:textColor="@color/black"
+                     android:textSize="20sp"
+                     app:layout_constraintBaseline_toBaselineOf="@+id/edittxtNumber3"
+                     app:layout_constraintStart_toStartOf="parent" />
+
+                 <EditText
+                     android:id="@+id/edittxtNumber3"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:minWidth="15dp"
+                     android:background="@drawable/edit_bg"
+                     android:text="9658231456"
+                     android:textColor="@color/black"
+                     android:textSize="20sp"
+                     android:padding="5dp"
+                     android:inputType="number"
+                     android:maxLength="12"
+                     android:layout_marginTop="10dp"
+                     android:layout_marginBottom="10dp"
+                     app:layout_constraintBottom_toBottomOf="parent"
+                     app:layout_constraintStart_toStartOf="@+id/guideline1"
+                     app:layout_constraintTop_toBottomOf="@+id/edittxtNumber2" />
+
+                 <androidx.constraintlayout.widget.Guideline
+                     android:id="@+id/guideline1"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:orientation="vertical"
+                     app:layout_constraintGuide_begin="115dp" />
+
+             </androidx.constraintlayout.widget.ConstraintLayout>
+         </androidx.cardview.widget.CardView>
+
+         <androidx.cardview.widget.CardView
+             android:id="@+id/CardView2"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_margin="30dp"
+             app:cardElevation="10dp"
+             app:cardBackgroundColor="@color/white"
+             app:cardCornerRadius="20dp"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toBottomOf="@+id/CardView1">
+
+             <androidx.constraintlayout.widget.ConstraintLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent">
+
+                 <TextView
+                     android:id="@+id/User2"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center_horizontal"
+                     android:layout_marginTop="5dp"
+                     android:text="Title"
+                     android:textColor="@color/black"
+                     android:textSize="26sp"
+                     android:textStyle="bold"
+                     app:layout_constraintEnd_toEndOf="parent"
+                     app:layout_constraintStart_toStartOf="parent"
+                     app:layout_constraintTop_toTopOf="parent" />
+
+                 <TextView
+                     android:id="@+id/textDate2"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center_horizontal"
+                     android:layout_marginStart="20dp"
+                     android:text="Date : "
+                     android:textColor="@color/black"
+                     android:textSize="20sp"
+                     app:layout_constraintBaseline_toBaselineOf="@+id/edittxtDate2"
+                     app:layout_constraintStart_toStartOf="parent" />
+
+                 <TextView
+                     android:id="@+id/edittxtDate2"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center_horizontal"
+                     android:background="@drawable/edit_bg"
+                     android:hint="25/10/2024"
+                     android:padding="5dp"
+                     android:clickable="false"
+                     android:textColor="@color/black"
+                     android:layout_marginTop="10dp"
+                     android:textSize="20sp"
+                     app:layout_constraintBottom_toTopOf="@+id/edittxtNumber5"
+                     app:layout_constraintStart_toStartOf="@+id/guideline2"
+                     app:layout_constraintTop_toBottomOf="@+id/User2" />
+
+                 <TextView
+                     android:id="@+id/textCardNumber5"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginStart="20dp"
+                     android:text="Number :"
+                     android:textColor="@color/black"
+                     android:textSize="20sp"
+                     app:layout_constraintBaseline_toBaselineOf="@+id/edittxtNumber5"
+                     app:layout_constraintStart_toStartOf="parent" />
+
+                 <EditText
+                     android:id="@+id/edittxtNumber5"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:minWidth="15dp"
+                     android:background="@drawable/edit_bg"
+                     android:text="7582461259"
+                     android:textColor="@color/black"
+                     android:textSize="20sp"
+                     android:padding="5dp"
+                     android:inputType="number"
+                     android:maxLength="12"
+                     android:layout_marginTop="10dp"
+                     android:layout_marginBottom="10dp"
+                     app:layout_constraintStart_toStartOf="@+id/guideline2"
+                     app:layout_constraintTop_toBottomOf="@+id/edittxtDate2" />
+
+                 <TextView
+                     android:id="@+id/textCardNumber6"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginStart="20dp"
+                     android:text="Number :"
+                     android:textColor="@color/black"
+                     android:textSize="20sp"
+                     app:layout_constraintBaseline_toBaselineOf="@+id/edittxtNumber6"
+                     app:layout_constraintStart_toStartOf="parent" />
+
+                 <EditText
+                     android:id="@+id/edittxtNumber6"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:minWidth="15dp"
+                     android:background="@drawable/edit_bg"
+                     android:text="8542626556"
+                     android:textColor="@color/black"
+                     android:textSize="20sp"
+                     android:padding="5dp"
+                     android:inputType="number"
+                     android:maxLength="12"
+                     android:layout_marginTop="10dp"
+                     android:layout_marginBottom="10dp"
+                     app:layout_constraintStart_toStartOf="@+id/guideline2"
+                     app:layout_constraintTop_toBottomOf="@+id/edittxtNumber5" />
+
+                 <TextView
+                     android:id="@+id/textCardNumber7"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginStart="20dp"
+                     android:text="Number :"
+                     android:textColor="@color/black"
+                     android:textSize="20sp"
+                     app:layout_constraintBaseline_toBaselineOf="@+id/edittxtNumber7"
+                     app:layout_constraintStart_toStartOf="parent" />
+
+                 <EditText
+                     android:id="@+id/edittxtNumber7"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:minWidth="15dp"
+                     android:background="@drawable/edit_bg"
+                     android:text="9658231456"
+                     android:textColor="@color/black"
+                     android:textSize="20sp"
+                     android:padding="5dp"
+                     android:inputType="number"
+                     android:maxLength="12"
+                     android:layout_marginTop="10dp"
+                     android:layout_marginBottom="10dp"
+                     app:layout_constraintBottom_toBottomOf="parent"
+                     app:layout_constraintStart_toStartOf="@+id/guideline2"
+                     app:layout_constraintTop_toBottomOf="@+id/textCardNumber6" />
+
+                 <androidx.constraintlayout.widget.Guideline
+                     android:id="@+id/guideline2"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:orientation="vertical"
+                     app:layout_constraintGuide_begin="115dp" />
+
+             </androidx.constraintlayout.widget.ConstraintLayout>
+         </androidx.cardview.widget.CardView>
+
+         <androidx.cardview.widget.CardView
+             android:id="@+id/CardView3"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_margin="30dp"
+             app:cardElevation="10dp"
+             app:cardBackgroundColor="@color/white"
+             app:cardCornerRadius="20dp"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toBottomOf="@+id/CardView2">
+
+             <androidx.constraintlayout.widget.ConstraintLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent">
+
+                 <TextView
+                     android:id="@+id/User3"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center_horizontal"
+                     android:layout_marginTop="5dp"
+                     android:text="Title"
+                     android:textColor="@color/black"
+                     android:textSize="26sp"
+                     android:textStyle="bold"
+                     app:layout_constraintEnd_toEndOf="parent"
+                     app:layout_constraintStart_toStartOf="parent"
+                     app:layout_constraintTop_toTopOf="parent" />
+
+                 <TextView
+                     android:id="@+id/textName3"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center_horizontal"
+                     android:layout_marginStart="20dp"
+                     android:layout_marginTop="20dp"
+                     android:layout_marginBottom="10dp"
+                     android:text="Name : UserName"
+                     android:textColor="@color/black"
+                     android:textSize="20sp"
+                     app:layout_constraintBottom_toTopOf="@+id/textNumber3"
+                     app:layout_constraintStart_toStartOf="parent"
+                     app:layout_constraintTop_toBottomOf="@+id/User3" />
+
+                 <TextView
+                     android:id="@+id/textNumber3"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center_horizontal"
+                     android:layout_marginStart="20dp"
+                     android:layout_marginBottom="10dp"
+                     android:text="Number : 936524785"
+                     android:textColor="@color/black"
+                     android:textSize="20sp"
+                     app:layout_constraintBottom_toBottomOf="parent"
+                     app:layout_constraintStart_toStartOf="parent"
+                     app:layout_constraintTop_toBottomOf="@+id/textName3" />
+
+             </androidx.constraintlayout.widget.ConstraintLayout>
+         </androidx.cardview.widget.CardView>
+         <androidx.cardview.widget.CardView
+             android:id="@+id/CardView4"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_margin="30dp"
+             app:cardElevation="10dp"
+             app:cardBackgroundColor="@color/white"
+             app:cardCornerRadius="20dp"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toBottomOf="@+id/CardView3">
+
+             <androidx.constraintlayout.widget.ConstraintLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent">
+
+                 <TextView
+                     android:id="@+id/User4"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center_horizontal"
+                     android:layout_marginTop="5dp"
+                     android:text="Title"
+                     android:textColor="@color/black"
+                     android:textSize="26sp"
+                     android:textStyle="bold"
+                     app:layout_constraintEnd_toEndOf="parent"
+                     app:layout_constraintStart_toStartOf="parent"
+                     app:layout_constraintTop_toTopOf="parent" />
+
+                 <TextView
+                     android:id="@+id/textName4"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center_horizontal"
+                     android:layout_marginStart="20dp"
+                     android:layout_marginTop="20dp"
+                     android:layout_marginBottom="10dp"
+                     android:text="Name : UserName"
+                     android:textColor="@color/black"
+                     android:textSize="20sp"
+                     app:layout_constraintBottom_toTopOf="@+id/textNumber4"
+                     app:layout_constraintStart_toStartOf="parent"
+                     app:layout_constraintTop_toBottomOf="@+id/User4" />
+
+                 <TextView
+                     android:id="@+id/textNumber4"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center_horizontal"
+                     android:layout_marginStart="20dp"
+                     android:layout_marginBottom="10dp"
+                     android:text="Number : 936524785"
+                     android:textColor="@color/black"
+                     android:textSize="20sp"
+                     app:layout_constraintBottom_toBottomOf="parent"
+                     app:layout_constraintStart_toStartOf="parent"
+                     app:layout_constraintTop_toBottomOf="@+id/textName4" />
+
+             </androidx.constraintlayout.widget.ConstraintLayout>
+         </androidx.cardview.widget.CardView>
+
+         <androidx.cardview.widget.CardView
+             android:id="@+id/CardView5"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_margin="30dp"
+             app:cardElevation="10dp"
+             app:cardBackgroundColor="@color/white"
+             app:cardCornerRadius="20dp"
+             android:layout_marginBottom="50dp"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintBottom_toBottomOf="parent"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toBottomOf="@+id/CardView4">
+
+             <androidx.constraintlayout.widget.ConstraintLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent">
+
+                 <TextView
+                     android:id="@+id/User5"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center_horizontal"
+                     android:layout_marginTop="5dp"
+                     android:text="Title"
+                     android:textColor="@color/black"
+                     android:textSize="26sp"
+                     android:textStyle="bold"
+                     app:layout_constraintEnd_toEndOf="parent"
+                     app:layout_constraintStart_toStartOf="parent"
+                     app:layout_constraintTop_toTopOf="parent" />
+
+                 <TextView
+                     android:id="@+id/textName5"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center_horizontal"
+                     android:layout_marginStart="20dp"
+                     android:layout_marginTop="20dp"
+                     android:layout_marginBottom="10dp"
+                     android:text="Name : UserName"
+                     android:textColor="@color/black"
+                     android:textSize="20sp"
+                     app:layout_constraintBottom_toTopOf="@+id/textNumber5"
+                     app:layout_constraintStart_toStartOf="parent"
+                     app:layout_constraintTop_toBottomOf="@+id/User5" />
+
+                 <TextView
+                     android:id="@+id/textNumber5"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center_horizontal"
+                     android:layout_marginStart="20dp"
+                     android:layout_marginBottom="10dp"
+                     android:text="Number : 936524785"
+                     android:textColor="@color/black"
+                     android:textSize="20sp"
+                     app:layout_constraintBottom_toBottomOf="parent"
+                     app:layout_constraintStart_toStartOf="parent"
+                     app:layout_constraintTop_toBottomOf="@+id/textName5" />
+
+             </androidx.constraintlayout.widget.ConstraintLayout>
+         </androidx.cardview.widget.CardView>
+     </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

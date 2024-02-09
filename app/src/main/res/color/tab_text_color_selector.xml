@@ -2,5 +2,5 @@
 <!-- res/color/tab_text_color_selector.xml -->
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:color="#FFFFFF" android:state_selected="true"/>
-    <item android:color="@color/unselected_tab_color"/>
+    <item android:color="#86FFFFFF"/>
 </selector>
