@@ -1,68 +1,75 @@
 package com.example.testapp;
-
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 import android.os.Bundle;
-import android.util.Log;
-import com.example.testapp.databinding.ActivityWebViewBinding;
 import com.google.android.material.tabs.TabLayout;
-import java.util.Objects;
+import java.util.ArrayList;
+import java.util.List;
 
 public class WebView extends AppCompatActivity {
-    private ActivityWebViewBinding binding;
     private TabLayout tabLayout1;
-    private WebViewFragment webViewFragment ;
-    private Tab2 Tab2 ;
-    private Tab3 Tab3 ;
-
+    private ViewPager viewPager;
+    private WebViewFragment webViewFragment;
+    private Tab2 tab2;
+    private Tab3 tab3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web_view);
-        tabLayout1 = findViewById(R.id.TabLayout1);
 
-        // Check if webViewFragment is null
-        if (webViewFragment == null) {
-            webViewFragment = new WebViewFragment(); // Create a new instance if null
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.fragment_container, webViewFragment);
-            transaction.commit();
-        }
-        if (Tab2 == null) {
-            Tab2 = new Tab2();
-        }
-        if (Tab3 == null) {
-            Tab3 = new Tab3();
-        }
+        tabLayout1 = findViewById(R.id.TabLayout1);
+        viewPager = findViewById(R.id.viewPager);
+
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+
+        webViewFragment = new WebViewFragment();
+        tab2 = new Tab2();
+        tab3 = new Tab3();
+        adapter.addFragment(webViewFragment, "webViewTab");
+        adapter.addFragment(tab2, "Tab2");
+        adapter.addFragment(tab3, "Tab3");
+
+
+        viewPager.setAdapter(adapter);
+
+        tabLayout1.setupWithViewPager(viewPager);
         tabLayout1.setTabTextColors(getResources().getColorStateList(R.color.tab_text_color_selector));
 
-        tabLayout1.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                Fragment fragment;
-                switch (Objects.requireNonNull(tab.getText()).toString()) {
-                    case "Tab2":
-                        fragment =  Tab2;
-                        break;
-                    case "Tab3":
-                        fragment =  Tab3;
-                        break;
-                    default:
-                        fragment =  webViewFragment;
-                }
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_container, fragment);
-                transaction.commit();
-            }
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-            }
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-            }
-        });
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout1));
+    }
+
+    private static class ViewPagerAdapter extends FragmentPagerAdapter {
+        private final List<Fragment> fragmentList = new ArrayList<>();
+        private final List<String> fragmentTitleList = new ArrayList<>();
+
+        public ViewPagerAdapter(FragmentManager fm) {
+            super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        }
+
+        @NonNull
+        @Override
+        public Fragment getItem(int position) {
+            return fragmentList.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return fragmentList.size();
+        }
+
+        public void addFragment(Fragment fragment, String title) {
+            fragmentList.add(fragment);
+            fragmentTitleList.add(title);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return fragmentTitleList.get(position);
+        }
     }
 }
