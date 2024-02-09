@@ -46,8 +46,8 @@ public class WebViewFragment extends Fragment implements ConnectivityChangeListe
             if (isConnected) {
                 animationView.setVisibility(View.GONE);
                 NointernetTxtView.setVisibility(View.GONE);
+                loadUrl();
                 mWebView.setVisibility(View.VISIBLE);
-                    loadUrl();
             }
             onConnectivityChanged(isConnected);
         }
@@ -94,6 +94,7 @@ public class WebViewFragment extends Fragment implements ConnectivityChangeListe
                     mWebView.setVisibility(View.GONE);
                 }
                 isUrlLoaded = true;
+
             }
             @Override
             public void onPageFinished(WebView view, String url) {
@@ -114,7 +115,6 @@ public class WebViewFragment extends Fragment implements ConnectivityChangeListe
                 mProgressBar.setProgress(newProgress);
             }
         });
-
         requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
@@ -148,20 +148,18 @@ public class WebViewFragment extends Fragment implements ConnectivityChangeListe
             mWebView.loadUrl("https://www.google.com/");
         }
     }
-
     @Override
     public void onConnectivityChanged(boolean isConnected) {
         if (isConnected) {
             animationView.setVisibility(View.GONE);
             NointernetTxtView.setVisibility(View.GONE);
-            mWebView.setVisibility(View.VISIBLE);
+//            mWebView.setVisibility(View.VISIBLE);
         }
     }
-
     @Override
     public void onRefresh() {
         mWebView.reload();
         swipeRefreshLayout.setRefreshing(false);
-        Log.d("Refresh" , "Refreashing");
+        Log.d("Refresh" , "Refreshing");
     }
 }

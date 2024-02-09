@@ -29,14 +29,15 @@
                 app:layout_constraintTop_toBottomOf="@+id/progressBar">
 
             </WebView>
-
-
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
             <ProgressBar
                 android:id="@+id/progressBar"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="-5dp"
+                android:progressTint="#008EFF"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/const3" />
 
@@ -48,10 +49,10 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:lottie_autoPlay="true"
                 app:lottie_loop="true"
-                app:lottie_rawRes="@raw/nointernetanimatio" />
+                app:lottie_rawRes="@raw/nointernetanimation" />
 
             <TextView
                 android:id="@+id/NointernetTxtView"
@@ -59,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/text_view_background"
                 android:padding="5dp"
-                android:text="No Internet Connection"
+                android:text="@string/no_internet_connection"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:visibility="invisible"
@@ -67,8 +68,6 @@
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/animationView">
-
             </TextView>
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

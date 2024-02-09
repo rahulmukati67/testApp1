@@ -73,4 +73,8 @@
     <string name="project_wise">PROJECT WISE</string>
     <string name="material_wise">Material Wise</string>
     <string name="report">Report</string>
+    <string name="webviewtab">webViewTab</string>
+    <string name="tab2">Tab2</string>
+    <string name="tab3">Tab3</string>
+    <string name="no_internet_connection">No Internet Connection</string>
 </resources>

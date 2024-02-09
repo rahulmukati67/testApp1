@@ -37,15 +37,13 @@ public class WebView extends AppCompatActivity {
         if (Tab3 == null) {
             Tab3 = new Tab3();
         }
+        tabLayout1.setTabTextColors(getResources().getColorStateList(R.color.tab_text_color_selector));
 
         tabLayout1.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 Fragment fragment;
                 switch (Objects.requireNonNull(tab.getText()).toString()) {
-                    case "webViewTab":
-                        fragment = webViewFragment; // Use the existing fragment instance
-                        break;
                     case "Tab2":
                         fragment =  Tab2;
                         break;
@@ -53,7 +51,7 @@ public class WebView extends AppCompatActivity {
                         fragment =  Tab3;
                         break;
                     default:
-                        fragment =  Tab2;
+                        fragment =  webViewFragment;
                 }
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.fragment_container, fragment);
