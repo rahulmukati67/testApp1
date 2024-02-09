@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "221786184817",
+    "project_id": "attendence-ecfad",
+    "storage_bucket": "attendence-ecfad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:221786184817:android:fc01b56f9fe40559718fd0",
+        "android_client_info": {
+          "package_name": "com.example.testapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYWXUtPTO4WkKzO-Alwi7qmkkMD6bvuh0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
