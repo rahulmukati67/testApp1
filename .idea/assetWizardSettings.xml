@@ -322,7 +322,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/ios_share/baseline_ios_share_24.xml" />
+                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/date_range/baseline_date_range_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -333,9 +333,8 @@
                         <option name="values">
                           <map>
                             <entry key="autoMirrored" value="true" />
-                            <entry key="color" value="1c1b1b" />
                             <entry key="opacityPercent" value="80" />
-                            <entry key="outputName" value="baseline_ios_share_24" />
+                            <entry key="outputName" value="baseline_date_range_24" />
                             <entry key="sourceFile" value="C:\Users\admin\AndroidStudioProjects\testApp" />
                           </map>
                         </option>

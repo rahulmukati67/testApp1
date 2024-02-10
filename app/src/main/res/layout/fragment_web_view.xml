@@ -30,16 +30,17 @@
 
             </WebView>
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-            <ProgressBar
-                android:id="@+id/progressBar"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="-5dp"
-                android:progressTint="#008EFF"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/const3" />
+
+           <com.google.android.material.progressindicator.LinearProgressIndicator
+               android:id="@+id/progressBar"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:indicatorColor="#008EFF"
+               android:indeterminate="true"
+               app:trackColor="#75CEF6"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toTopOf="@+id/const3" />
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/animationView"

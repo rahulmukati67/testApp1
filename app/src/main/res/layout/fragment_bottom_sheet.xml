@@ -271,7 +271,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:text="Update"
-                        android:background="@drawable/btn_bg"
+                        android:backgroundTint="@color/black"
                         android:textColor="@color/white"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"

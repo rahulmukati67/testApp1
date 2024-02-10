@@ -28,7 +28,7 @@ import java.util.Arrays;
 import java.util.Collections;
 
 public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickListener{
-    private Button btnAdd , btnSub , btnSubmit;
+    private Button  btnSubmit;
     private LinearLayout linearLayout ;
     private EditText editQty , editNotes;
     private  ArrayList<String> rlist  , list, listMaterialNAme;
@@ -38,7 +38,7 @@ public class ProjectWise extends Fragment  implements AdapterClass.OnItemClickLi
     private RecyclerView projestNameRv;
     private ImageView drop_down;
     private LinearLayout linerLayout1 , MaterialNameLinearLayout;
-    TextView projectListHint , TextViewMaterialName;
+    TextView projectListHint , TextViewMaterialName , btnAdd , btnSub;
     int counter =1;
     ArrayAdapter<String> adapter,a;
 

@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class startActivity extends AppCompatActivity {
-    private Button btnAttendance , btnPurchaseRequest , btnPaymentRequest , btnTable , btnBottomSheet ,btnWebView;
+    private Button btnAttendance , btnPurchaseRequest , btnDatePicker,btnPaymentRequest , btnTable , btnBottomSheet ,btnWebView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +20,7 @@ public class startActivity extends AppCompatActivity {
         btnTable = findViewById(R.id.btnTable);
         btnBottomSheet = findViewById(R.id.btnBottomSheet);
         btnWebView = findViewById(R.id.btnWebView);
+        btnDatePicker = findViewById(R.id.btnDatePicker);
 
         btnAttendance.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +63,14 @@ public class startActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(startActivity.this  , WebView.class);
+                startActivity(intent);
+            }
+        });
+
+        btnDatePicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(startActivity.this  , DatePicker.class);
                 startActivity(intent);
             }
         });

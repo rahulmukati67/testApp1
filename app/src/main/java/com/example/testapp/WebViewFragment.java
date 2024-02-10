@@ -16,7 +16,6 @@ import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
@@ -24,10 +23,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.airbnb.lottie.LottieAnimationView;
+import com.google.android.material.progressindicator.LinearProgressIndicator;
 
 public class WebViewFragment extends Fragment implements ConnectivityChangeListener , SwipeRefreshLayout.OnRefreshListener {
     private WebView mWebView;
-    private ProgressBar mProgressBar;
+//    private ProgressBar mProgressBar;
+    private LinearProgressIndicator mProgressBar;
     private String currentUrl;
     private LottieAnimationView animationView;
     private boolean isConnected;
@@ -112,7 +113,9 @@ public class WebViewFragment extends Fragment implements ConnectivityChangeListe
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
                 super.onProgressChanged(view, newProgress);
-                mProgressBar.setProgress(newProgress);
+//                mProgressBar.setProgress(newProgress);
+                int progress = newProgress;
+                mProgressBar.setProgressCompat(progress, true);
             }
         });
         requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), new OnBackPressedCallback(true) {
