@@ -53,7 +53,7 @@ public class Post_Property extends AppCompatActivity {
                 if(position == 0)
                     tv.setTextColor(Color.GRAY);
                 else
-                    tv.setTextColor(Color.WHITE);
+                    tv.setTextColor(Color.BLACK);
                 return view;
             }
         };

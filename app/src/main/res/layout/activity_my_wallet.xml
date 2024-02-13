@@ -240,6 +240,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
                 android:maxLength="8"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -259,6 +261,9 @@
                 android:id="@+id/coupon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textCapCharacters"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
                 android:maxLength="8" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -406,6 +411,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
                 android:maxLength="8"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -425,6 +432,9 @@
                 android:id="@+id/coupon1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textCapCharacters"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
                 android:maxLength="8" />
         </com.google.android.material.textfield.TextInputLayout>
 

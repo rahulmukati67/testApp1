@@ -1,13 +1,11 @@
 package com.example.testapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Toast;
-
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.textfield.TextInputEditText;
@@ -24,8 +22,8 @@ public class MyWallet extends AppCompatActivity {
         Proceed = findViewById(R.id.btnProceed);
         TransferApplyCoupon = findViewById(R.id.btnTransferApplyCoupon);
         TransferProceed = findViewById(R.id.btnTransferProceed);
-        amountChipGroup=findViewById(R.id.amountChipGroup);
-        amountChipGroup1=findViewById(R.id.amountChipGroup1);
+        amountChipGroup = findViewById(R.id.amountChipGroup);
+        amountChipGroup1 =findViewById(R.id.amountChipGroup1);
         amount = findViewById(R.id.amount);
         amount1 = findViewById(R.id.amount1);
 
