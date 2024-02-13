@@ -2,8 +2,10 @@
 <resources>
 
     <style name="CustomMaterialDatePickerDialog" parent="ThemeOverlay.Material3.MaterialCalendar">
-        <item name="android:width">500dp</item>
-        <item name="android:height">800dp</item>
+        <item name="colorSurface">?attr/colorPrimary</item>
+        <item name="colorOnSurface">?attr/colorOnPrimary</item>
+        <item name="colorPrimary">?attr/colorSecondary</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="textAppearanceHeadlineSmall">@style/TextAppearance.Material3.HeadlineSmall</item>
     </style>
-
 </resources>

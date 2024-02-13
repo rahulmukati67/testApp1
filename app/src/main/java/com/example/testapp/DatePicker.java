@@ -1,18 +1,12 @@
 package com.example.testapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
-
 import com.example.testapp.databinding.ActivityDatePickerBinding;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
-import com.google.android.material.textview.MaterialTextView;
+
 
 public class DatePicker extends AppCompatActivity {
 
@@ -28,10 +22,11 @@ public class DatePicker extends AppCompatActivity {
 //                .setTheme(R.style.CustomMaterialDatePickerDialog)
                 .build();
 
+
         datePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener<Long>() {
             @Override
             public void onPositiveButtonClick(Long selection) {
-                String date = datePicker.getHeaderText();
+                String date = String.valueOf(datePicker.getHeaderText());
                 binding.txtDatePicker.setText(date);
             }
         });
