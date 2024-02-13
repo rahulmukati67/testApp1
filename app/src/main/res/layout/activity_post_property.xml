@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".Post_Property">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/txtPostProperty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Post Property"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtTypes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Types"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@+id/guideline1"
+        app:layout_constraintTop_toBottomOf="@+id/txtPostProperty" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/typesChipGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:singleSelection="true"
+        app:layout_constraintStart_toStartOf="@+id/guideline1"
+        app:layout_constraintTop_toBottomOf="@+id/txtTypes">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipResidential"
+            android:layout_width="wrap_content"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/chip_background"
+            android:textColor="@color/white"
+            app:chipStrokeWidth="2dp"
+            app:chipCornerRadius="20dp"
+            app:chipStrokeColor="@color/white"
+            android:text="Residential" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipCommercial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:backgroundTint="@color/chip_background"
+            app:chipStrokeWidth="2dp"
+            app:chipCornerRadius="20dp"
+            app:chipStrokeColor="@color/white"
+            android:textColor="@color/white"
+            android:text="Commercial" />
+    </com.google.android.material.chip.ChipGroup>
+
+    <TextView
+        android:id="@+id/txtIWantTo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="I Want To"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/guideline1"
+        app:layout_constraintTop_toBottomOf="@+id/typesChipGroup" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/wantChipGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:singleSelection="true"
+        app:checkedChip="@+id/chipResidentail"
+        app:layout_constraintStart_toStartOf="@+id/guideline1"
+        app:layout_constraintTop_toBottomOf="@+id/txtIWantTo">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipRent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:backgroundTint="@color/chip_background"
+            android:textColor="@color/white"
+            app:chipStrokeWidth="2dp"
+            app:chipCornerRadius="20dp"
+            app:chipStrokeColor="@color/white"
+            android:text="Rent" />
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipSale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:backgroundTint="@color/chip_background"
+            app:chipStrokeWidth="2dp"
+            app:chipCornerRadius="20dp"
+            app:chipStrokeColor="@color/white"
+            android:textColor="@color/white"
+            android:text="Sale" />
+    </com.google.android.material.chip.ChipGroup>
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginEnd="35dp"
+        android:popupBackground="@color/black"
+        android:layout_marginTop="10dp"
+        android:minHeight="40dp"
+        android:background="@drawable/simple_bg"
+        app:layout_constraintStart_toStartOf="@+id/guideline1"
+        app:layout_constraintTop_toBottomOf="@+id/wantChipGroup" />
+
+    <TextView
+        android:id="@+id/txtConstructionStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Construction Status"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/guideline1"
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/constructionChipGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:singleSelection="true"
+        app:layout_constraintStart_toStartOf="@+id/guideline1"
+        app:layout_constraintTop_toBottomOf="@+id/txtConstructionStatus">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipReadyToMove"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:backgroundTint="@color/chip_background"
+            android:textColor="@color/white"
+            app:chipStrokeWidth="2dp"
+            app:chipCornerRadius="20dp"
+            app:chipStrokeColor="@color/white"
+            android:text="Ready To Move" />
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipUnderConstuction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:backgroundTint="@color/chip_background"
+            app:chipStrokeWidth="2dp"
+            app:chipCornerRadius="20dp"
+            app:chipStrokeColor="@color/white"
+            android:textColor="@color/white"
+            android:text="Under Constuction" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipResale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:backgroundTint="@color/chip_background"
+            app:chipStrokeWidth="2dp"
+            app:chipCornerRadius="20dp"
+            app:chipStrokeColor="@color/white"
+            android:textColor="@color/white"
+            android:text="Resale" />
+    </com.google.android.material.chip.ChipGroup>
+
+    <TextView
+        android:id="@+id/txtBHK"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="BHK"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/guideline1"
+        app:layout_constraintTop_toBottomOf="@+id/constructionChipGroup" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/bhkChipGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:singleSelection="true"
+        app:layout_constraintStart_toStartOf="@+id/guideline1"
+        app:layout_constraintTop_toBottomOf="@+id/txtBHK">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip1BHK"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:backgroundTint="@color/chip_background"
+            android:textColor="@color/white"
+            app:chipStrokeWidth="2dp"
+            app:chipCornerRadius="20dp"
+            android:textSize="12sp"
+            app:chipStrokeColor="@color/white"
+            android:text="1 BHK" />
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip2BHK"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:backgroundTint="@color/chip_background"
+            app:chipStrokeWidth="2dp"
+            app:chipCornerRadius="20dp"
+            android:textSize="12sp"
+
+            app:chipStrokeColor="@color/white"
+            android:textColor="@color/white"
+            android:text="2 BHK" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip3BHK"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/chip_background"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            app:chipStrokeWidth="2dp"
+            app:chipCornerRadius="20dp"
+            android:textSize="12sp"
+            app:chipStrokeColor="@color/white"
+            android:textColor="@color/white"
+            android:text="3 BHK" />
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip4BHK"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:backgroundTint="@color/chip_background"
+            app:chipStrokeWidth="2dp"
+            app:chipCornerRadius="20dp"
+            android:textSize="12sp"
+            app:chipStrokeColor="@color/white"
+            android:textColor="@color/white"
+            android:text="4 BHK" />
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip5BHK"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:backgroundTint="@color/chip_background"
+            app:chipStrokeWidth="2dp"
+            android:textSize="12sp"
+            app:chipCornerRadius="20dp"
+            app:chipStrokeColor="@color/white"
+            android:textColor="@color/white"
+            android:text="3+BHK" />
+    </com.google.android.material.chip.ChipGroup>
+
+    <TextView
+        android:id="@+id/txtBathroom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Bathroom"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/guideline1"
+        app:layout_constraintTop_toBottomOf="@+id/bhkChipGroup" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/bathroomChipGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:singleSelection="true"
+        app:layout_constraintStart_toStartOf="@+id/guideline1"
+        app:layout_constraintTop_toBottomOf="@+id/txtBathroom">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip1B"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:backgroundTint="@color/chip_background"
+            android:textColor="@color/white"
+            app:chipStrokeWidth="2dp"
+            app:chipCornerRadius="20dp"
+            android:textSize="12sp"
+            app:chipStrokeColor="@color/white"
+            android:text=" 0 " />
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip2B"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:backgroundTint="@color/chip_background"
+            app:chipStrokeWidth="2dp"
+            app:chipCornerRadius="20dp"
+            android:textSize="12sp"
+            app:chipStrokeColor="@color/white"
+            android:textColor="@color/white"
+            android:text=" 1 " />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip3B"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:backgroundTint="@color/chip_background"
+            app:chipStrokeWidth="2dp"
+            app:chipCornerRadius="20dp"
+            android:textSize="12sp"
+            app:chipStrokeColor="@color/white"
+            android:textColor="@color/white"
+            android:text=" 2 " />
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip4B"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:backgroundTint="@color/chip_background"
+            app:chipStrokeWidth="2dp"
+            app:chipCornerRadius="20dp"
+            android:textSize="12sp"
+            app:chipStrokeColor="@color/white"
+            android:textColor="@color/white"
+            android:text=" 4 " />
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip5B"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:backgroundTint="@color/chip_background"
+            app:chipStrokeWidth="2dp"
+            android:textSize="12sp"
+            app:chipCornerRadius="20dp"
+            app:chipStrokeColor="@color/white"
+            android:textColor="@color/white"
+            android:text=" 5 " />
+    </com.google.android.material.chip.ChipGroup>
+
+    <TextView
+        android:id="@+id/txtBalcony"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Balcony"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/guideline1"
+        app:layout_constraintTop_toBottomOf="@+id/bathroomChipGroup" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/balconyChipGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:singleSelection="true"
+        app:layout_constraintStart_toStartOf="@+id/guideline1"
+        app:layout_constraintTop_toBottomOf="@+id/txtBalcony">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip1Balcony"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:backgroundTint="@color/chip_background"
+            android:textColor="@color/white"
+            app:chipStrokeWidth="2dp"
+            app:chipCornerRadius="20dp"
+            android:textSize="12sp"
+            app:chipStrokeColor="@color/white"
+            android:text=" 0 " />
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip2Balcony"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:backgroundTint="@color/chip_background"
+            app:chipStrokeWidth="2dp"
+            app:chipCornerRadius="20dp"
+            android:textSize="12sp"
+            app:chipStrokeColor="@color/white"
+            android:textColor="@color/white"
+            android:text=" 1 " />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip3Balcony"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:backgroundTint="@color/chip_background"
+            app:chipStrokeWidth="2dp"
+            app:chipCornerRadius="20dp"
+            android:textSize="12sp"
+            app:chipStrokeColor="@color/white"
+            android:textColor="@color/white"
+            android:text=" 2 " />
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip4Balcony"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:backgroundTint="@color/chip_background"
+            app:chipStrokeWidth="2dp"
+            app:chipCornerRadius="20dp"
+            android:textSize="12sp"
+            app:chipStrokeColor="@color/white"
+            android:textColor="@color/white"
+            android:text=" 4 " />
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip5Balcony"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:backgroundTint="@color/chip_background"
+            app:chipStrokeWidth="2dp"
+            android:textSize="12sp"
+            app:chipCornerRadius="20dp"
+            app:chipStrokeColor="@color/white"
+            android:textColor="@color/white"
+            android:text=" 5 " />
+    </com.google.android.material.chip.ChipGroup>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="30dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

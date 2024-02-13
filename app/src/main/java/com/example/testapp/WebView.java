@@ -1,10 +1,13 @@
 package com.example.testapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
+
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import com.google.android.material.tabs.TabLayout;
 import java.util.ArrayList;
@@ -39,6 +42,7 @@ public class WebView extends AppCompatActivity {
 
         tabLayout1.setupWithViewPager(viewPager);
         tabLayout1.setTabTextColors(getResources().getColorStateList(R.color.tab_text_color_selector));
+//        tabLayout1.setTabTextColors(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.tab_text_color_selector)));
 
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout1));
     }

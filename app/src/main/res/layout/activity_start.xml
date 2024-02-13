@@ -7,101 +7,131 @@
     android:background="@color/white"
     tools:context=".startActivity">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="50dp"
-        android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <Button
-            android:id="@+id/btnAttendence"
-            android:text="Attendence Layout"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:backgroundTint="@color/black"
-            android:textColor="@color/white"
-            android:layout_margin="20dp"
-            android:padding="10dp"
-            android:layout_height="wrap_content"/>
-        <Button
-            android:id="@+id/btnPurchaseRequest"
-            android:text="Purrchas Request Layout"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:backgroundTint="@color/black"
-            android:textColor="@color/white"
-            android:padding="10dp"
-            android:layout_width="wrap_content"
-            android:layout_margin="20dp"
-            android:layout_height="wrap_content">
-        </Button>
-
-        <Button
-            android:id="@+id/btnPaymentRequest"
-            android:text="PaymentRequest Layout"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:backgroundTint="@color/black"
-            android:textColor="@color/white"
-            android:layout_margin="20dp"
-            android:padding="10dp"
-            android:layout_height="wrap_content">
-        </Button>
+        app:layout_constraintTop_toTopOf="parent">
 
 
-        <Button
-            android:id="@+id/btnTable"
-            android:text="Table Layout"
-            android:gravity="center"
-            android:backgroundTint="@color/black"
-            android:textColor="@color/white"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_margin="20dp"
-            android:padding="10dp"
-            android:layout_height="wrap_content">
-        </Button>
-        <Button
-            android:id="@+id/btnBottomSheet"
-            android:text="Bottom Sheet Fragment"
-            android:gravity="center"
-            android:padding="10dp"
-            android:backgroundTint="@color/black"
-            android:textColor="@color/white"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_margin="20dp"
-            android:layout_height="wrap_content">
-        </Button>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/btnWebView"
-            android:text="WebView"
-            android:gravity="center"
-            android:padding="10dp"
-            android:backgroundTint="@color/black"
-            android:textColor="@color/white"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_margin="20dp"
-            android:layout_height="wrap_content">
-        </Button>
-        <Button
-            android:id="@+id/btnDatePicker"
-            android:text="Date Picker "
-            android:gravity="center"
-            android:padding="10dp"
-            android:backgroundTint="@color/black"
-            android:textColor="@color/white"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_margin="20dp"
-            android:layout_height="wrap_content">
-        </Button>
-    </LinearLayout>
+            <Button
+                android:id="@+id/btnAttendence"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:backgroundTint="@color/black"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Attendence Layout"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/btnPurchaseRequest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:backgroundTint="@color/black"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Purrchas Request Layout"
+                android:textColor="@color/white"/>
+
+            <Button
+                android:id="@+id/btnPaymentRequest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:backgroundTint="@color/black"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="PaymentRequest Layout"
+                android:textColor="@color/white"/>
+
+
+            <Button
+                android:id="@+id/btnTable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:backgroundTint="@color/black"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Table Layout"
+                android:textColor="@color/white"/>
+
+            <Button
+                android:id="@+id/btnBottomSheet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:backgroundTint="@color/black"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Bottom Sheet Fragment"
+                android:textColor="@color/white"/>
+
+            <Button
+                android:id="@+id/btnWebView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:backgroundTint="@color/black"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="WebView"
+                android:textColor="@color/white"/>
+
+            <Button
+                android:id="@+id/btnDatePicker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:backgroundTint="@color/black"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Date Picker "
+                android:textColor="@color/white"/>
+
+            <Button
+                android:id="@+id/btnPostProperty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:backgroundTint="@color/black"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Post Property Activity "
+                android:textColor="@color/white"/>
+
+            <Button
+                android:id="@+id/btnMyWallet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                android:backgroundTint="@color/black"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="My Wallet "
+                android:textColor="@color/white"/>
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

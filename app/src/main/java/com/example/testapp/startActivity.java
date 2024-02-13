@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class startActivity extends AppCompatActivity {
-    private Button btnAttendance , btnPurchaseRequest , btnDatePicker,btnPaymentRequest , btnTable , btnBottomSheet ,btnWebView;
+    private Button btnAttendance , btnPurchaseRequest , btnMyWallet,btnPostProperty,btnDatePicker,btnPaymentRequest , btnTable , btnBottomSheet ,btnWebView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +21,9 @@ public class startActivity extends AppCompatActivity {
         btnBottomSheet = findViewById(R.id.btnBottomSheet);
         btnWebView = findViewById(R.id.btnWebView);
         btnDatePicker = findViewById(R.id.btnDatePicker);
+        btnPostProperty= findViewById(R.id.btnPostProperty);
+        btnMyWallet = findViewById(R.id.btnMyWallet);
+
 
         btnAttendance.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +74,22 @@ public class startActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(startActivity.this  , DatePicker.class);
+                startActivity(intent);
+            }
+        });
+
+        btnPostProperty.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(startActivity.this  , Post_Property.class);
+                startActivity(intent);
+            }
+        });
+
+        btnMyWallet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(startActivity.this  ,MyWallet.class);
                 startActivity(intent);
             }
         });
