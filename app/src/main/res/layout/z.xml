@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/btnBack"
@@ -22,12 +22,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="Name Of User "
-        android:textStyle="bold"
         android:maxWidth="300dp"
         android:maxLines="1"
+        android:text="Name Of User "
         android:textColor="@color/black"
         android:textSize="22sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/btnCalender"
         app:layout_constraintStart_toEndOf="@+id/btnBack"
         app:layout_constraintTop_toTopOf="parent" />
@@ -49,9 +49,9 @@
         android:id="@+id/profilePicture"
         android:layout_width="130dp"
         android:layout_height="130dp"
+        android:layout_marginTop="80dp"
         android:src="@drawable/img"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="80dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtName" />
 
@@ -61,11 +61,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="User Name"
-        android:textStyle="bold"
-        android:textColor="@color/black"
         android:maxWidth="300dp"
+        android:text="User Name"
+        android:textColor="@color/black"
         android:textSize="22sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profilePicture" />
@@ -74,55 +74,65 @@
         android:id="@+id/follower"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="7dp"
         android:text="11.5k"
         android:textSize="18sp"
-        tools:layout_editor_absoluteX="97dp"
-        tools:layout_editor_absoluteY="314dp" />
+        app:layout_constraintBottom_toTopOf="@+id/txtfollower"
+        app:layout_constraintStart_toStartOf="@+id/txtfollower" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/txtfollower"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
         android:text="follower"
         android:textSize="18sp"
-        tools:layout_editor_absoluteX="87dp"
-        tools:layout_editor_absoluteY="345dp" />
+        app:layout_constraintEnd_toStartOf="@+id/txtfollowing"
+        app:layout_constraintTop_toTopOf="@+id/txtfollowing" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/following"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="7dp"
         android:text="100"
         android:textSize="18sp"
-        tools:layout_editor_absoluteX="199dp"
-        tools:layout_editor_absoluteY="314dp" />
+        app:layout_constraintBottom_toTopOf="@+id/txtfollowing"
+        app:layout_constraintStart_toStartOf="@+id/txtfollowing" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/txtfollowing"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="22dp"
         android:text="following"
         android:textSize="18sp"
-        tools:layout_editor_absoluteX="183dp"
-        tools:layout_editor_absoluteY="345dp" />
+        app:layout_constraintEnd_toStartOf="@+id/likes"
+        app:layout_constraintTop_toBottomOf="@+id/likes" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/likes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="26dp"
         android:text="98.5k"
         android:textSize="18sp"
-        tools:layout_editor_absoluteX="278dp"
-        tools:layout_editor_absoluteY="314dp" />
+        app:layout_constraintStart_toEndOf="@+id/txtUserName"
+        app:layout_constraintTop_toBottomOf="@+id/txtUserName" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/txtlikes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
         android:text="Likes"
         android:textSize="18sp"
-        tools:layout_editor_absoluteX="280dp"
-        tools:layout_editor_absoluteY="345dp" />
+        app:layout_constraintEnd_toEndOf="@+id/likes"
+        app:layout_constraintTop_toBottomOf="@+id/likes" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
