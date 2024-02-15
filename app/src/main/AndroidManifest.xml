@@ -7,6 +7,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECEIVE_SMS"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
 
     <uses-permission android:name="android.permission.SEND_SMS"/>
     <uses-feature android:name="android.hardware.telephony"/>
@@ -25,6 +27,9 @@
         android:supportsRtl="true"
         android:theme="@style/Base.Theme.TestApp"
         tools:targetApi="31">
+        <service
+            android:name=".Background" />
+
         <activity
             android:name=".Record"
             android:exported="false" />
@@ -86,5 +91,7 @@
             android:name=".MainActivity"
             android:exported="false" />
     </application>
+
+
 
 </manifest>

