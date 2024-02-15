@@ -61,17 +61,17 @@
                 android:textColor="@color/white"/>
 
 
-            <Button
-                android:id="@+id/btnTable"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="10dp"
-                android:backgroundTint="@color/black"
-                android:gravity="center"
-                android:padding="10dp"
-                android:text="Table Layout"
-                android:textColor="@color/white"/>
+<!--            <Button-->
+<!--                android:id="@+id/btnTable"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_margin="10dp"-->
+<!--                android:backgroundTint="@color/black"-->
+<!--                android:gravity="center"-->
+<!--                android:padding="10dp"-->
+<!--                android:text="Table Layout"-->
+<!--                android:textColor="@color/white"/>-->
 
             <Button
                 android:id="@+id/btnBottomSheet"

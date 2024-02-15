@@ -17,7 +17,7 @@ public class startActivity extends AppCompatActivity {
         btnAttendance = findViewById(R.id.btnAttendence);
         btnPaymentRequest = findViewById(R.id.btnPaymentRequest);
         btnPurchaseRequest = findViewById(R.id.btnPurchaseRequest);
-        btnTable = findViewById(R.id.btnTable);
+//        btnTable = findViewById(R.id.btnTable);
         btnBottomSheet = findViewById(R.id.btnBottomSheet);
         btnWebView = findViewById(R.id.btnWebView);
         btnDatePicker = findViewById(R.id.btnDatePicker);
@@ -29,7 +29,7 @@ public class startActivity extends AppCompatActivity {
         ButtonClick(btnAttendance ,  MainActivity.class);
         ButtonClick(btnPurchaseRequest ,  purchaseRequest.class);
         ButtonClick(btnPaymentRequest , PaymentRequest.class);
-        ButtonClick(btnTable , FirebaseDataBase.class);
+//        ButtonClick(btnTable , FirebaseDataBase.class);
         ButtonClick(btnBottomSheet ,  BottomSheetActivity.class);
         ButtonClick(btnWebView ,  WebView.class);
         ButtonClick(btnDatePicker ,  DatePicker.class);
