@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F6F6FD"
+    tools:context=".ProjectTool">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/const1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/white"
+        android:paddingBottom="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:rotation="180"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/baseline_exit_to_app_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Downtown Commons"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/btnBack"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="20dp"
+            android:text="Project Tools"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <GridLayout
+        android:id="@+id/gridView"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:columnCount="3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/const1"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardDailyLogs"
+            android:layout_width="80dp"
+            android:layout_margin="20dp"
+            android:layout_height="80dp"
+            android:contentDescription="Daily Loges">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp">
+
+                <ImageView
+                    android:id="@+id/img1"
+                    android:layout_width="40dp"
+                    android:layout_height="55dp"
+                    android:contentDescription="Daily Logs"
+                    android:src="@drawable/baseline_article_24"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:padding="2dp"
+                    android:text="Daily Logs"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toBottomOf="@+id/img1"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardTask"
+            android:layout_width="80dp"
+            android:layout_margin="20dp"
+            android:layout_height="80dp"
+            android:contentDescription="Card Daily Task">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp">
+
+                <ImageView
+                    android:id="@+id/img2"
+                    android:layout_width="40dp"
+                    android:layout_height="55dp"
+                    android:src="@drawable/baseline_task_24"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:padding="2dp"
+                    android:text="Daily Task"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toBottomOf="@+id/img2"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardTimeCard"
+            android:layout_width="80dp"
+            android:layout_margin="20dp"
+            android:layout_height="80dp"
+            android:contentDescription="Card Time Card">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp">
+
+                <ImageView
+                    android:id="@+id/img3"
+                    android:layout_width="40dp"
+                    android:layout_height="55dp"
+                    android:src="@drawable/baseline_access_time_filled_24"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:padding="2dp"
+                    android:text="Time Card"
+                    android:textStyle="bold"
+                    android:gravity="center_horizontal"
+                    app:layout_constraintTop_toBottomOf="@+id/img3"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardMaterials"
+            android:layout_width="80dp"
+            android:layout_margin="20dp"
+            android:layout_height="80dp"
+            android:contentDescription="Card Material">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp">
+
+                <ImageView
+                    android:id="@+id/img4"
+                    android:layout_width="40dp"
+                    android:layout_height="55dp"
+                    android:src="@drawable/baseline_horizontal_split_24"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:padding="2dp"
+                    android:text="Materials"
+                    android:gravity="center_horizontal"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toBottomOf="@+id/img4"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardEquipment"
+            android:layout_width="85dp"
+            android:layout_margin="20dp"
+            android:layout_height="80dp"
+            android:contentDescription="Card Equipment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp">
+
+                <ImageView
+                    android:id="@+id/img5"
+                    android:layout_width="40dp"
+                    android:layout_height="55dp"
+                    android:src="@drawable/baseline_toys_24"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:padding="2dp"
+                    android:text="Equipment"
+                    android:textStyle="bold"
+                    android:gravity="center_horizontal"
+                    app:layout_constraintTop_toBottomOf="@+id/img5"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardCheckList"
+            android:layout_width="80dp"
+            android:layout_margin="20dp"
+            android:layout_height="80dp"
+            android:contentDescription="Card Check List">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp">
+
+                <ImageView
+                    android:id="@+id/img6"
+                    android:layout_width="40dp"
+                    android:layout_height="55dp"
+                    android:src="@drawable/baseline_checklist_24"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:padding="2dp"
+                    android:text="CheckList"
+                    android:textStyle="bold"
+                    android:gravity="center_horizontal"
+                    app:layout_constraintTop_toBottomOf="@+id/img6"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardGallery"
+            android:layout_width="80dp"
+            android:layout_margin="20dp"
+            android:layout_height="80dp"
+            android:contentDescription="Card Gallery">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp">
+
+                <ImageView
+                    android:id="@+id/img7"
+                    android:layout_width="40dp"
+                    android:layout_height="55dp"
+                    android:src="@drawable/baseline_image_search_24"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:padding="2dp"
+                    android:text="Gallery"
+                    android:textStyle="bold"
+                    android:gravity="center_horizontal"
+                    app:layout_constraintTop_toBottomOf="@+id/img7"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardInsights"
+            android:layout_width="80dp"
+            android:layout_margin="20dp"
+            android:contentDescription="Card Insights"
+             android:layout_height="80dp">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp">
+
+                <ImageView
+                    android:id="@+id/img8"
+                    android:layout_width="40dp"
+                    android:layout_height="55dp"
+                    android:src="@drawable/baseline_insights_24"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:padding="2dp"
+                    android:text="Insights"
+                    android:textStyle="bold"
+                    android:gravity="center_horizontal"
+                    app:layout_constraintTop_toBottomOf="@+id/img8"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardKiosks"
+            android:layout_width="80dp"
+            android:layout_margin="20dp"
+            android:layout_height="80dp"
+            android:contentDescription="Card Kiosks">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp">
+
+                <ImageView
+                    android:id="@+id/img9"
+                    android:layout_width="40dp"
+                    android:layout_height="55dp"
+                    android:src="@drawable/baseline_manage_accounts_24"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:padding="2dp"
+                    android:text="Kiosks"
+                    android:textStyle="bold"
+                    android:gravity="center_horizontal"
+                    app:layout_constraintTop_toBottomOf="@+id/img9"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+
+    </GridLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

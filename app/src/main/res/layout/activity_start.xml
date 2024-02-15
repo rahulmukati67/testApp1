@@ -132,6 +132,30 @@
                 android:padding="10dp"
                 android:text="My Wallet "
                 android:textColor="@color/white"/>
+            <Button
+                android:id="@+id/btnConstructionJob"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                android:backgroundTint="@color/black"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Construction Job Layout"
+                android:textColor="@color/white"/>
+
+<!--            <Button-->
+<!--                android:id="@+id/btnLogin"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_margin="20dp"-->
+<!--                android:backgroundTint="@color/black"-->
+<!--                android:gravity="center"-->
+<!--                android:padding="10dp"-->
+<!--                android:text="Login Activity "-->
+<!--                android:textColor="@color/white"/>-->
+
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

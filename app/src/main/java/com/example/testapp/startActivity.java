@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class startActivity extends AppCompatActivity {
-    private Button btnAttendance , btnPurchaseRequest , btnMyWallet,btnPostProperty,btnDatePicker,btnPaymentRequest , btnTable , btnBottomSheet ,btnWebView;
+    private Button btnAttendance , btnPurchaseRequest , btnConstructionJob,btnLogin,btnMyWallet,btnPostProperty,btnDatePicker,btnPaymentRequest , btnTable , btnBottomSheet ,btnWebView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,73 +23,27 @@ public class startActivity extends AppCompatActivity {
         btnDatePicker = findViewById(R.id.btnDatePicker);
         btnPostProperty= findViewById(R.id.btnPostProperty);
         btnMyWallet = findViewById(R.id.btnMyWallet);
+        btnConstructionJob = findViewById(R.id.btnConstructionJob);
+//        btnLogin =  findViewById(R.id.btnLogin);
 
+        ButtonClick(btnAttendance ,  MainActivity.class);
+        ButtonClick(btnPurchaseRequest ,  purchaseRequest.class);
+        ButtonClick(btnPaymentRequest , PaymentRequest.class);
+        ButtonClick(btnTable , FirebaseDataBase.class);
+        ButtonClick(btnBottomSheet ,  BottomSheetActivity.class);
+        ButtonClick(btnWebView ,  WebView.class);
+        ButtonClick(btnDatePicker ,  DatePicker.class);
+        ButtonClick(btnPostProperty , Post_Property.class);
+        ButtonClick(btnMyWallet , MyWallet.class);
+        ButtonClick(btnConstructionJob , ConstructionJob.class);
 
-        btnAttendance.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(startActivity.this , MainActivity.class);
-                startActivity(intent);
-            }
-        });
+    }
 
-        btnPurchaseRequest.setOnClickListener(new View.OnClickListener() {
+    private void ButtonClick(Button btn , Class<?> target){
+        btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(startActivity.this , purchaseRequest.class);
-                startActivity(intent);
-            }
-        });
-        btnPaymentRequest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(startActivity.this , PaymentRequest.class);
-                startActivity(intent);
-            }
-        });
-        btnTable.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(startActivity.this , FirebaseDataBase.class);
-                startActivity(intent);
-            }
-        });
-        btnBottomSheet.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(startActivity.this , BottomSheetActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        btnWebView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(startActivity.this  , WebView.class);
-                startActivity(intent);
-            }
-        });
-
-        btnDatePicker.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(startActivity.this  , DatePicker.class);
-                startActivity(intent);
-            }
-        });
-
-        btnPostProperty.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(startActivity.this  , Post_Property.class);
-                startActivity(intent);
-            }
-        });
-
-        btnMyWallet.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(startActivity.this  ,MyWallet.class);
+                Intent intent = new Intent(startActivity.this  ,target);
                 startActivity(intent);
             }
         });

@@ -19,6 +19,21 @@
         android:theme="@style/Base.Theme.TestApp"
         tools:targetApi="31">
         <activity
+            android:name=".Record"
+            android:exported="false" />
+        <activity
+            android:name=".Salary"
+            android:exported="false" />
+        <activity
+            android:name=".TrackMaterial"
+            android:exported="false" />
+        <activity
+            android:name=".ProjectTool"
+            android:exported="false" />
+        <activity
+            android:name=".ConstructionJob"
+            android:exported="false" />
+        <activity
             android:name=".MyWallet"
             android:exported="false" />
         <activity
