@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:scrollbars="none"
     tools:context=".Record">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="40dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/const1"
@@ -191,7 +197,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent"
                 android:textSize="16sp"
-                android:layout_marginStart="45dp"
+                android:layout_marginStart="42dp"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toEndOf="@+id/txtWednesday"
                 android:text="Th"/>
@@ -266,7 +272,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:text="Monday March 25 ,2023"
-            android:textSize="20sp"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/calendarView" />
 
@@ -321,7 +327,7 @@
             app:layout_constraintTop_toTopOf="@id/imgWorkLogs"
             app:layout_constraintBottom_toBottomOf="@id/imgWorkLogs"
             android:layout_marginStart="10dp"
-            android:textSize="20sp" />
+            android:textSize="16sp" />
 
         <ImageView
             android:id="@+id/imgMore1"
@@ -374,7 +380,7 @@
             app:layout_constraintTop_toTopOf="@id/imgNotes"
             app:layout_constraintBottom_toBottomOf="@id/imgNotes"
             android:layout_marginStart="10dp"
-            android:textSize="20sp" />
+            android:textSize="16sp" />
 
         <ImageView
             android:id="@+id/imgMore2"
@@ -426,7 +432,7 @@
             app:layout_constraintTop_toTopOf="@id/imgSurvey"
             app:layout_constraintBottom_toBottomOf="@id/imgSurvey"
             android:layout_marginStart="10dp"
-            android:textSize="20sp" />
+            android:textSize="16sp" />
 
         <ImageView
             android:id="@+id/imgMore3"
@@ -478,7 +484,7 @@
             app:layout_constraintTop_toTopOf="@id/imgAttactment"
             app:layout_constraintBottom_toBottomOf="@id/imgAttactment"
             android:layout_marginStart="10dp"
-            android:textSize="20sp" />
+            android:textSize="16sp" />
 
         <ImageView
             android:id="@+id/imgMore4"
@@ -585,4 +591,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="20dp"
         android:text="Complete"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
