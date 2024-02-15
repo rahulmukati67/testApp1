@@ -83,7 +83,9 @@
             android:layout_height="80dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView16" />
+            app:layout_constraintTop_toBottomOf="@+id/textView16" >
+
+        </FrameLayout>
 
         <TextView
             android:id="@+id/date1"
