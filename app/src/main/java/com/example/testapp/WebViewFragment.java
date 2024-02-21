@@ -34,6 +34,7 @@ public class WebViewFragment extends Fragment implements ConnectivityChangeListe
     private boolean isConnected;
     Bundle webViewState;
     SwipeRefreshLayout swipeRefreshLayout;
+    WebSettings webSettings;
     private TextView NointernetTxtView;
     private boolean isUrlLoaded = false;
 
@@ -56,7 +57,7 @@ public class WebViewFragment extends Fragment implements ConnectivityChangeListe
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        setRetainInstance(true);
+
 
         return inflater.inflate(R.layout.fragment_web_view, container, false);
     }
@@ -71,7 +72,8 @@ public class WebViewFragment extends Fragment implements ConnectivityChangeListe
         animationView.setVisibility(View.VISIBLE);
         NointernetTxtView.setVisibility(View.VISIBLE);
         mWebView.setVisibility(View.GONE);
-        WebSettings webSettings = mWebView.getSettings();
+
+         webSettings = mWebView.getSettings();
         webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
 
         IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
@@ -148,7 +150,8 @@ public class WebViewFragment extends Fragment implements ConnectivityChangeListe
             mWebView.loadUrl(currentUrl);
         } else {
             Log.d("WebViewFragment", "Default URL loaded as currentUrl is empty");
-            mWebView.loadUrl("https://www.google.com/");
+            webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);
+            mWebView.loadUrl("https://www.google.co.in/");
         }
     }
     @Override
